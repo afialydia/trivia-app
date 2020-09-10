@@ -1,21 +1,84 @@
-import React from 'react';
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import getTriviaQuestions from '../redux/set_up/set_up.actions';
+import getTriviaQuestions from "../redux/set_up/set_up.actions";
+import { Form, Label, FormGroup, Input, Button } from "reactstrap";
 
+const Game_Set_Up = ({ getTriviaQuestions }) => {
+	const [state, setState] = useState({
+		amount: "5",
+		category: "31",
+		difficulty: "easy",
+	});
 
+	const handleChange = (e) => {
+		setState({ ...state, [e.target.name]: e.target.value });
+		console.log(state);
+	};
 
-const Game_Set_Up = ({getTriviaQuestions}) => {
-  return (
-    <div className="set_up">
-      Hi I'm new here
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const { amount, category, difficulty } = state;
+		console.log(amount, category, difficulty);
 
-      <button onClick={()=> getTriviaQuestions()}>Hi Press Me</button>
-    </div>
-  );
-}
+		getTriviaQuestions({ amount, category, difficulty });
+	};
+
+	return (
+		<div className="set_up">
+			<Form onSubmit={handleSubmit}>
+				<h2>Trivia Settings</h2>
+
+				<FormGroup>
+					<Label for="exampleSelect">Category</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="category"
+						onChange={handleChange}
+					>
+						<option value="31">Anime/Manga</option>
+						<option value="23">History</option>
+						<option value="11">Film</option>
+					</Input>
+				</FormGroup>
+				<FormGroup>
+					<Label for="exampleSelect">Number of Questions</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="amount"
+						id="amount"
+						onChange={handleChange}
+					>
+						<option>4</option>
+						<option>8</option>
+						<option>12</option>
+					</Input>
+				</FormGroup>
+
+				<FormGroup>
+					<Label for="Difficulty">Difficulty Level</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="difficulty"
+						id="difficulty"
+						onChange={handleChange}
+					>
+						<option>easy</option>
+						<option>medium</option>
+						<option>hard</option>
+					</Input>
+				</FormGroup>
+
+				<Button>Submit</Button>
+			</Form>
+		</div>
+	);
+};
 
 const mapDispatchToProps = (dispatch) => ({
-	getTriviaQuestions: () => dispatch(getTriviaQuestions()),
+	getTriviaQuestions: (data) => dispatch(getTriviaQuestions(data)),
 });
 
 export default connect(null, mapDispatchToProps)(Game_Set_Up);
