@@ -1,7 +1,8 @@
-import React from "react";
-import { Card, CardBody } from "reactstrap";
+import React, { useState } from "react";
+import { Button, Card, CardBody } from "reactstrap";
+import "./components.styles.css";
 
-const Question = ({ props }) => {
+const Question = ({ props, right_answer }) => {
 	const question = decodeURIComponent(props.question);
 	const correct = decodeURIComponent(props.correct_answer);
 	const options = [];
@@ -21,16 +22,42 @@ const Question = ({ props }) => {
 		options[j] = temp;
 	}
 
+	// const { status, setStatus } = useState("");
+
+	// const result = (option) => {
+	// 	if (option == correct) {
+	// 		setStatus("Congrats! You're right!");
+	// 	} else {
+	// 		setStatus("Oops! No Dice.");
+	// 	}
+	// };
+	const [clicked, setClicked] = useState(false);
 
 	return (
-		<Card>
-			<CardBody>
-				<h4>{question}</h4>
-				{options.map((option) => {
-					return <div key={option}>{option}</div>;
-				})}
-			</CardBody>
-		</Card>
+		<>
+			<Card>
+				<CardBody>
+					<h4>{question}</h4>
+					{options.map((option) => {
+						return (
+							<div>
+								<Button
+									onClick={()=> setClicked(true)}
+									className={`options ${
+										option === correct && clicked ? "one" : "two" 
+									}`}
+									key={option}
+								>
+									{option}
+								</Button>
+							</div>
+						);
+					})}
+
+					{/* <h4>{status}</h4> */}
+				</CardBody>
+			</Card>
+		</>
 	);
 };
 

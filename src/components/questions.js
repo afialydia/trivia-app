@@ -3,8 +3,6 @@ import {
 	Carousel,
 	CarouselItem,
 	CarouselControl,
-	CarouselIndicators,
-	CarouselCaption,
 	Card,
 	CardBody,
 } from "reactstrap";
@@ -13,7 +11,7 @@ import Question from "./question";
 const Questions = ({ allQuestions }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animating, setAnimating] = useState(false);
-	console.log(allQuestions);
+
 	const next = () => {
 		if (animating) return;
 		const nextIndex =
@@ -55,17 +53,18 @@ const Questions = ({ allQuestions }) => {
 			</CarouselItem>
 		);
 	};
-
+	const [clicked, setClicked] = useState(true);
 
 	return (
 		<div>
-			<Carousel activeIndex={activeIndex}>
+			<Carousel autoplay={false} activeIndex={activeIndex}>
 				{slides}
-
 				<CarouselControl
 					direction="next"
 					directionText="Next"
 					onClickHandler={next}
+					className={`carousel-control-next 
+						${clicked ? "one" : ""}`}
 				/>
 			</Carousel>
 		</div>
