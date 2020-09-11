@@ -1,0 +1,19 @@
+.btn-secondary.options{
+    width: 30vw;
+    min-width: 200px;
+    max-width: 600px;
+    margin:5px;   
+ }
+
+ .btn-secondary.options.one {
+background: green;
+
+}
+
+.btn-secondary.options.two {
+/* background: red; */
+}
+
+.carousel-control-next.one{
+background: green;
+}

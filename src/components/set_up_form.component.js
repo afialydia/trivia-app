@@ -1,99 +1,84 @@
-import React from "react";
-import postToAPI from "../redux/post-smurf/post.actions";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectSmurf } from "../redux/get-smurf/smurf.selector";
-import FormInput from "./FormInput";
-import getAPI from "../redux/get-smurf/smurf.actions";
+import getTriviaQuestions from "../redux/set_up/set_up.actions";
+import { Form, Label, FormGroup, Input, Button } from "reactstrap";
 
-import "./components.css";
+const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
+	const [state, setState] = useState({
+		amount: "4",
+		category: "31",
+		difficulty: "easy",
+	});
 
-class VillagerForm extends React.Component {
-	constructor(props) {
-		super(props);
+	const handleChange = (e) => {
+		setState({ ...state, [e.target.name]: e.target.value });
+		console.log(state);
+	};
 
-		this.state = {
-			name: "",
-			age: "",
-			height: ""
-		};
-	}
-
-	componentDidUpdate(){
-		this.props.welcome()
-	}
-
-	handleSubmit = e => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
-		this.props.newvillager(this.state);
-		this.setState({
-			name: "",
-			age: "",
-			height: ""
-		});
+		const { amount, category, difficulty } = state;
+		console.log(amount, category, difficulty);
+		getTriviaQuestions({ amount, category, difficulty });
+		toggle()
 	};
 
-	handleChange = e => {
-		const { value, name } = e.target;
+	return (
+		<div className="set_up">
+			<Form onSubmit={handleSubmit}>
+				<h2>Trivia Settings</h2>
 
-		this.setState({ [name]: value });
-	};
+				<FormGroup>
+					<Label for="exampleSelect">Category</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="category"
+						onChange={handleChange}
+					>
+						<option value="31">Anime/Manga</option>
+						<option value="23">History</option>
+						<option value="11">Film</option>
+					</Input>
+				</FormGroup>
+				<FormGroup>
+					<Label for="exampleSelect">Number of Questions</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="amount"
+						id="amount"
+						onChange={handleChange}
+					>
+						<option>4</option>
+						<option>8</option>
+						<option>12</option>
+					</Input>
+				</FormGroup>
 
-	render() {
-		return (
-			<div>
-				<h2>Welcome New Villager</h2>
+				<FormGroup>
+					<Label for="Difficulty">Difficulty Level</Label>
+					<Input
+						bsSize="lg"
+						type="select"
+						name="difficulty"
+						id="difficulty"
+						onChange={handleChange}
+					>
+						<option>easy</option>
+						<option>medium</option>
+						<option>hard</option>
+					</Input>
+				</FormGroup>
 
-				<form className="form" onSubmit={this.handleSubmit}>
-					<div>
-						<FormInput
-							name="name"
-							type="text"
-							handleChange={this.handleChange}
-							value={this.state.name}
-							label="name"
-							required
-						/>
-						<FormInput
-							name="age"
-							type="text"
-							value={this.state.age}
-							handleChange={this.handleChange}
-							label="age"
-							required
-						/>
-						<FormInput
-							name="height"
-							type="text"
-							value={this.state.height}
-							handleChange={this.handleChange}
-							label="height"
-							required
-						/>
-					</div>
-					<div>
-						<button className="button" type="submit">
-							New Villager
-						</button>
-					</div>
-				</form>
-			</div>
-		);
-	}
-}
+				<Button>Start Game</Button>
+			</Form>
+		</div>
+	);
+};
 
-const mapStateToProps = createStructuredSelector({
-	villagers: selectSmurf
+const mapDispatchToProps = (dispatch) => ({
+	getTriviaQuestions: (data) => dispatch(getTriviaQuestions(data)),
 });
 
-const mapDispatchToProps = dispatch => ({
-	newvillager: villager => dispatch(postToAPI(villager)),
-	welcome: () => dispatch(getAPI())
-
-});
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Set_Up_orm);
+export default connect(null, mapDispatchToProps)(Game_Set_Up);
