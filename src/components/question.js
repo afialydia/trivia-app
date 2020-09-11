@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button, Card, CardBody } from "reactstrap";
-import "./components.styles.css";
+import { connect } from "react-redux";
 
-const Question = ({ props, right_answer }) => {
+import "./components.styles.css";
+import { correctAnswer, incorrectAnswer } from "../redux/set_up/set_up.actions";
+
+const Question = ({ props, correctAnswer, incorrectAnswer }) => {
 	const question = decodeURIComponent(props.question);
 	const correct = decodeURIComponent(props.correct_answer);
 	const options = [];
@@ -42,9 +45,9 @@ const Question = ({ props, right_answer }) => {
 						return (
 							<div>
 								<Button
-									onClick={()=> setClicked(true)}
+									onClick={() => {option === correct ? correctAnswer() : incorrectAnswer()}}
 									className={`options ${
-										option === correct && clicked ? "one" : "two" 
+										option === correct && clicked ? "one" : "two"
 									}`}
 									key={option}
 								>
@@ -61,4 +64,9 @@ const Question = ({ props, right_answer }) => {
 	);
 };
 
-export default Question;
+const mapDispatchToProps = (dispatch) => ({
+	correctAnswer: () => dispatch(correctAnswer()),
+	incorrectAnswer: () => dispatch(incorrectAnswer()),
+});
+
+export default connect(null, mapDispatchToProps)(Question);

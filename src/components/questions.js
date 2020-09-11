@@ -6,9 +6,14 @@ import {
 	Card,
 	CardBody,
 } from "reactstrap";
-import Question from "./question";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-const Questions = ({ allQuestions }) => {
+import Question from "./question";
+import { loadQuestion} from "../redux/set_up/set_up.actions";
+import {answerChosen} from '../redux/set_up/set_up.utils'
+
+const Questions = ({ allQuestions,answerChosen, loadQuestion }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animating, setAnimating] = useState(false);
 
@@ -17,6 +22,7 @@ const Questions = ({ allQuestions }) => {
 		const nextIndex =
 			activeIndex === allQuestions.length - 1 ? 0 : activeIndex + 1;
 		setActiveIndex(nextIndex);
+		loadQuestion()
 	};
 
 	const slides = allQuestions.map((item) => {
@@ -37,23 +43,6 @@ const Questions = ({ allQuestions }) => {
 		);
 	});
 
-	const game_end = () => {
-		return (
-			<CarouselItem
-				className="custom-tag"
-				tag="div"
-				onExiting={() => setAnimating(true)}
-				onExited={() => setAnimating(false)}
-			>
-				<Card>
-					<CardBody>
-						<h2>Thanks for Playing!</h2>{" "}
-					</CardBody>
-				</Card>
-			</CarouselItem>
-		);
-	};
-	const [clicked, setClicked] = useState(true);
 
 	return (
 		<div>
@@ -64,11 +53,19 @@ const Questions = ({ allQuestions }) => {
 					directionText="Next"
 					onClickHandler={next}
 					className={`carousel-control-next 
-						${clicked ? "one" : ""}`}
+						${answerChosen ? "one" : ""}`}
 				/>
 			</Carousel>
 		</div>
 	);
 };
 
-export default Questions;
+const mapStateToProps =  createStructuredSelector({
+	answerChosen
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	loadQuestion: ()=> dispatch(loadQuestion())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);

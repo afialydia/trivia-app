@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GAME_SET_UP from "../components/set_up_form.component";
+import SET_UP from "../components/set_up_form.component";
 import { Modal, ModalHeader, ModalBody , Button} from "reactstrap";
 
 const Game_Start = (props) => {
@@ -25,7 +25,7 @@ const Game_Start = (props) => {
 
 				<ModalBody>
 					
-						<GAME_SET_UP toggle={toggle}/>
+						<SET_UP toggle={toggle}/>
 		
 					
 				</ModalBody>
