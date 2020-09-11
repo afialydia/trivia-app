@@ -1,7 +1,8 @@
 import { Set_Up_Types } from "./set_up.utils";
 
 const initialState = {
-	questions: [],
+    questions: [],
+    question:{},
 	isFetching: false,
 	fetched: false,
 	error: ""

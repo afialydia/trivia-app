@@ -1,84 +1,44 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import getTriviaQuestions from "../redux/set_up/set_up.actions";
-import { Form, Label, FormGroup, Input, Button } from "reactstrap";
+import GAME_SET_UP from "../components/set_up_form.component";
+import { Modal, ModalHeader, ModalBody , Button} from "reactstrap";
 
-const Game_Set_Up = ({ getTriviaQuestions }) => {
-	const [state, setState] = useState({
-		amount: "5",
-		category: "31",
-		difficulty: "easy",
-	});
+const Game_Start = (props) => {
+	const [modal, setModal] = useState(false);
 
-	const handleChange = (e) => {
-		setState({ ...state, [e.target.name]: e.target.value });
-		console.log(state);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const { amount, category, difficulty } = state;
-		console.log(amount, category, difficulty);
-
-		getTriviaQuestions({ amount, category, difficulty });
-	};
+	const toggle = () => setModal(!modal);
 
 	return (
-		<div className="set_up">
-			<Form onSubmit={handleSubmit}>
-				<h2>Trivia Settings</h2>
+		<div>
+			<Modal
+				isOpen={modal}
+				bssize="lg"
+				aria-labelledby="contained-modal-title-vcenter"
+				centered={false}
+				backdrop={true}
+				fade={true}
+				autoFocus={true}
+				toggle={toggle}
+				className="menu-modal"
+				contentClassName="menu-content"
+			>
+        <ModalHeader toggle={toggle}>Boy Howdy! Ready for some trivia?</ModalHeader>
 
-				<FormGroup>
-					<Label for="exampleSelect">Category</Label>
-					<Input
-						bsSize="lg"
-						type="select"
-						name="category"
-						onChange={handleChange}
-					>
-						<option value="31">Anime/Manga</option>
-						<option value="23">History</option>
-						<option value="11">Film</option>
-					</Input>
-				</FormGroup>
-				<FormGroup>
-					<Label for="exampleSelect">Number of Questions</Label>
-					<Input
-						bsSize="lg"
-						type="select"
-						name="amount"
-						id="amount"
-						onChange={handleChange}
-					>
-						<option>4</option>
-						<option>8</option>
-						<option>12</option>
-					</Input>
-				</FormGroup>
-
-				<FormGroup>
-					<Label for="Difficulty">Difficulty Level</Label>
-					<Input
-						bsSize="lg"
-						type="select"
-						name="difficulty"
-						id="difficulty"
-						onChange={handleChange}
-					>
-						<option>easy</option>
-						<option>medium</option>
-						<option>hard</option>
-					</Input>
-				</FormGroup>
-
-				<Button>Submit</Button>
-			</Form>
+				<ModalBody>
+					
+						<GAME_SET_UP toggle={toggle}/>
+		
+					
+				</ModalBody>
+			</Modal>
+			<Button
+				onClick={() => {
+					toggle();
+				}}
+			>
+				Trivia Settings
+			</Button>
 		</div>
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	getTriviaQuestions: (data) => dispatch(getTriviaQuestions(data)),
-});
-
-export default connect(null, mapDispatchToProps)(Game_Set_Up);
+export default Game_Start;
