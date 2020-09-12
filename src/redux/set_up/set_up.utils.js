@@ -1,6 +1,5 @@
 //selectors and types
 
-
 export const Set_Up_Types = {
 	GET_START: "GET_START",
 	GET_SUCCESS: "GET_SUCCESS",
@@ -12,6 +11,8 @@ export const Set_Up_Types = {
 	SET_GAME_RESET: "SET_GAME_RESET",
 	SET_LOAD_QUESTION: "SET_LOAD_QUESTION",
 };
+
+//selectors for accessing state throughout app
 
 export const selectAllQuestions = (state) => state.set_up_reducer.questions;
 

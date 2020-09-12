@@ -54,19 +54,23 @@ const Question = ({
 		} else if (isCorrectAnswer === true) {
 			return <h5 style={{ color: "green" }}>Correct!</h5>;
 		}
-	return <h5 style={{ color: "red" }}>{`Incorrect! The answer is ${correct}!`}</h5>;
+		return (
+			<h5 style={{ color: "red" }}>{`Incorrect! The answer is ${correct}!`}</h5>
+		);
 	};
 
 	const endOfGame = (activeIndex) => {
 		if (activeIndex + 1 === totalQuestions && answerChosen) {
 			return (
 				<div>
-					
 					<Alert className="game-over" color="success">
-						<h6 className="alert-heading">Well done! You've completed the Trivia Quiz!</h6>
+						<h6 className="alert-heading">
+							Well done! You've completed the Trivia Quiz!
+						</h6>
 						<p>
-							Feel free to improve upon your score by clicking the next button or to trying
-							your hand at one of the <a href=".">other categories!</a> Have a great day!
+							Feel free to improve upon your score by clicking the next button
+							or to trying your hand at one of the{" "}
+							<a href=".">other categories!</a> Have a great day!
 						</p>
 					</Alert>
 					{gameOver()}
@@ -75,26 +79,24 @@ const Question = ({
 		}
 	};
 
-
-
-	
-
 	return (
 		<>
 			<Card className="card">
 				<CardBody className="question">
 					{endOfGame(activeIndex)}
 					<h4>{question}</h4>
-					<br /> {isCorrect(isCorrectAnswer,correct)}
+					<br /> {isCorrect(isCorrectAnswer, correct)}
 					<br />
 					{options.map((option) => {
 						return (
 							<div key={option}>
 								<Button
 									onClick={() => {
-										option === correct ? correctAnswer() : incorrectAnswer();	
+										option === correct
+											? correctAnswer(totalScore, totalQuestions)
+											: incorrectAnswer();
 									}}
-									disabled={answerChosen? true:false}
+									disabled={answerChosen ? true : false}
 									className="options"
 									key={option}
 								>
@@ -124,7 +126,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	correctAnswer: () => dispatch(correctAnswer()),
+	correctAnswer: (totalScore, totalQuestions) =>
+		dispatch(correctAnswer(totalScore, totalQuestions)),
 	incorrectAnswer: () => dispatch(incorrectAnswer()),
 	gameOver: () => dispatch(gameOver()),
 });
