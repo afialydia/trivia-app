@@ -72,7 +72,7 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 						onChange={handleChange}
 					>
 						<option value="easy">Easy</option>
-						<option valuie="medium">Medium</option>
+						<option value="medium">Medium</option>
 						<option value="hard">Hard</option>
 					</Input>
 				</FormGroup>
