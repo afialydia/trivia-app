@@ -1,6 +1,10 @@
-import { Set_Up_Types } from "./set_up.utils";
+//libraries
 import axios from "axios";
 
+//files
+import { Set_Up_Types } from "./set_up.utils";
+
+//api call
 export const getTriviaQuestions = (data) => (dispatch) => {
 	dispatch({ type: Set_Up_Types.GET_START });
 	axios
@@ -26,12 +30,11 @@ export const loadQuestion = () => (dispatch) => {
 };
 
 export const correctAnswer = (totalScore, totalQuestions) => (dispatch) => {
-	console.log("total here", totalScore, totalQuestions);
-	{
+	//error handling for score limit	
 		totalScore === totalQuestions
 			? dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER_LIMIT })
 			: dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER });
-	}
+	
 };
 
 export const incorrectAnswer = () => (dispatch) => {

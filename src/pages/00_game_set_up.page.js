@@ -1,8 +1,12 @@
+//libraries
 import React, { useState } from "react";
+
+//styles
 import { Modal, ModalHeader, ModalBody , Button} from "reactstrap";
+import '../components/styles.css'
 
 import SET_UP from "../components/trivia_settings";
-import '../components/components.styles.css'
+
 
 const Game_Start = (props) => {
 	const [modal, setModal] = useState(true);

@@ -1,5 +1,4 @@
-//selectors and types
-
+// types
 export const Set_Up_Types = {
 	GET_START: "GET_START",
 	GET_SUCCESS: "GET_SUCCESS",
@@ -12,8 +11,7 @@ export const Set_Up_Types = {
 	SET_LOAD_QUESTION: "SET_LOAD_QUESTION",
 };
 
-//selectors for accessing state throughout app
-
+// selectors for accessing state throughout app
 export const selectAllQuestions = (state) => state.set_up_reducer.questions;
 
 export const totalQuestions = (state) => state.set_up_reducer.questions.length;

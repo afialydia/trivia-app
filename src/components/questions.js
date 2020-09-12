@@ -1,23 +1,28 @@
+//libraries
 import React, { useState } from "react";
-import {
-	Carousel,
-	CarouselItem,
-	CarouselControl,
-	
-} from "reactstrap";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
+//styles
+import {
+	Carousel,
+	CarouselItem,
+	CarouselControl
+} from "reactstrap";
+
+//files
 import Question from "./question";
 import { loadQuestion } from "../redux/set_up/set_up.actions";
 import { answerChosen, isCorrectAnswer } from "../redux/set_up/set_up.utils";
+
+
 
 const Questions = ({
 	allQuestions,
 	answerChosen,
 	loadQuestion,
-	isCorrectAnswer,
-	lastQuestion
+	isCorrectAnswer
+	
 }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animating, setAnimating] = useState(false);

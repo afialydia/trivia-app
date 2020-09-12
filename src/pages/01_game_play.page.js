@@ -1,6 +1,9 @@
+//libraries
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+//files
 import { selectAllQuestions } from "../redux/set_up/set_up.utils";
 import Questions from "../components/questions";
 

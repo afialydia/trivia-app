@@ -1,4 +1,5 @@
-import { Set_Up_Types, totalQuestions } from "./set_up.utils";
+//files
+import { Set_Up_Types } from "./set_up.utils";
 
 const initialState = {
 	questions: [],
@@ -47,7 +48,6 @@ const set_up_reducer = (state = initialState, action) => {
 		case Set_Up_Types.SET_CORRECT_ANSWER_LIMIT:
 			return {
 				...state,
-				// score: (state.score += 1),
 				clicked: true,
 				correct: true,
 			};

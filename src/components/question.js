@@ -1,10 +1,13 @@
+//Libraries
 import React from "react";
-import { Button, Card, CardBody, Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import "./components.styles.css";
+//styles
+import "./styles.css";
+import { Button, Card, CardBody, Alert } from "reactstrap";
 
+//files
 import {
 	correctAnswer,
 	gameOver,
@@ -48,6 +51,7 @@ const Question = ({
 		options[j] = temp;
 	}
 
+	
 	const isCorrect = (isCorrectAnswer, correct) => {
 		if (isCorrectAnswer === undefined) {
 			return "";

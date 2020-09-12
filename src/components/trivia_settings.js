@@ -1,7 +1,13 @@
+//libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import {getTriviaQuestions, loadQuestion} from "../redux/set_up/set_up.actions";
+
+//styles
 import { Form, Label, FormGroup, Input, Button } from "reactstrap";
+
+//files
+import {getTriviaQuestions, loadQuestion} from "../redux/set_up/set_up.actions";
+
 
 const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 	const [state, setState] = useState({

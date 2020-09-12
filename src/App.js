@@ -1,7 +1,10 @@
+//libraries
 import React from 'react';
 
-
+//styles
 import './App.css';
+
+//files
 import GAME_PLAY from './pages/01_game_play.page';
 import GAME_SET_UP from './pages/00_game_set_up.page';
 

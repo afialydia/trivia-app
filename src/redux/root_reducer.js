@@ -1,4 +1,7 @@
+//libraries
 import { combineReducers } from "redux";
+
+//files
 import set_up_reducer from './set_up/set_up.reducer'
 
 const combinedReducers = combineReducers({
