@@ -73,7 +73,7 @@ const Question = ({
 						</h6>
 						<p>
 							Feel free to improve upon your score by clicking the next button
-							or to trying your hand at one of the{" "}
+							or to try your hand at one of the{" "}
 							<a href=".">other categories!</a> Have a great day!
 						</p>
 					</Alert>
