@@ -12,14 +12,14 @@ This app was built using create-react-app (CRA). Follow the steps below to setup
 
 1. Create a forked copy of this project.
 2. Clone your OWN version of the repository in your terminal.
-3. Download project dependencies by running one of these two commands `yarn` or `npm install`
+3. Download project dependencies by running one of these two commands `yarn` or `npm install` (I personally use npm 🤷🏾)
 4. Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
 5. Take a peak under the hood 👩🏾‍🔧
 
 #### Option 2 - Clone this Repo
 
 1. Clone down this version of the repository in your terminal.
-2. Download project dependencies by running one of these two commands `yarn` or `npm install`
+2. Download project dependencies by running one of these two commands `yarn` or `npm install` (I personally use npm 🤷🏾)
 3. Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
 4. Take a peak under the hood 👩🏾‍🔧
 
