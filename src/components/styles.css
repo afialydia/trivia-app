@@ -42,3 +42,22 @@
 	background:blue;
 	border: none;
 }
+
+.modal-content{
+	display: flex;
+	place-items: center stretch;
+}
+
+.modal-body, .modal-header{
+	width: 100%;	
+}
+
+.settings-form{
+/* background: red; */
+text-align: center;
+}
+
+
+.btn-secondary.start-button{
+background: green;
+}

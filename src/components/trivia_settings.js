@@ -30,12 +30,12 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 	};
 
 	return (
-		<div className="set_up">
-			<Form onSubmit={handleSubmit}>
-				<h2>Trivia Settings</h2>
-
+			<Form className="settings-form" onSubmit={handleSubmit}>
+				<h4>Trivia Settings</h4>
+				
 				<FormGroup>
-					<Label for="exampleSelect">Category</Label>
+					<Label for="label">Category</Label>
+
 					<Input
 						bsSize="lg"
 						type="select"
@@ -48,7 +48,7 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 					</Input>
 				</FormGroup>
 				<FormGroup>
-					<Label for="exampleSelect">Number of Questions</Label>
+					<Label for="label">Number of Questions</Label>
 					<Input
 						bsSize="lg"
 						type="select"
@@ -63,7 +63,7 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 				</FormGroup>
 
 				<FormGroup>
-					<Label for="Difficulty">Difficulty Level</Label>
+					<Label for="label">Difficulty Level</Label>
 					<Input
 						bsSize="lg"
 						type="select"
@@ -77,9 +77,9 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 					</Input>
 				</FormGroup>
 
-				<Button>Start Game</Button>
+				<Button className="start-button">Start Game</Button>
+				
 			</Form>
-		</div>
 	);
 };
 

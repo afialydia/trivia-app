@@ -24,8 +24,8 @@ const Game_Start = (props) => {
 				fade={true}
 				autoFocus={true}
 				toggle={toggle}
-				className="menu-modal"
-				contentClassName="menu-content"
+				className="trivia-settings-modal"
+				contentClassName="modal-content"
 			>
         <ModalHeader toggle={toggle}>Boy Howdy! Ready for some trivia?</ModalHeader>
 

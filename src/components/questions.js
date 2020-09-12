@@ -65,6 +65,7 @@ const Questions = ({
 			>
 				{slides}
 
+
 				{answerChosen ? (
 					<CarouselControl
 						direction="next"

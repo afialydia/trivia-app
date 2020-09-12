@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 
 //styles
 import "./styles.css";
-import { Button, Card, CardBody, Alert } from "reactstrap";
+import { Button, Card, CardBody } from "reactstrap";
 
 //files
 import {
@@ -20,6 +20,8 @@ import {
 	answerChosen,
 	totalScore,
 } from "../redux/set_up/set_up.utils";
+import { isCorrect, endOfGame } from '../hooks/hooks.utils.js'
+
 
 const Question = ({
 	props,
@@ -43,7 +45,7 @@ const Question = ({
 		options.push(incorrect);
 	});
 
-	//randomizing options
+	//randomizing options so that correct answer does not sit in the same place each time
 	for (let i = options.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * i);
 		const temp = options[i];
@@ -51,43 +53,11 @@ const Question = ({
 		options[j] = temp;
 	}
 
-	
-	const isCorrect = (isCorrectAnswer, correct) => {
-		if (isCorrectAnswer === undefined) {
-			return "";
-		} else if (isCorrectAnswer === true) {
-			return <h5 style={{ color: "green" }}>Correct!</h5>;
-		}
-		return (
-			<h5 style={{ color: "red" }}>{`Incorrect! The answer is ${correct}!`}</h5>
-		);
-	};
-
-	const endOfGame = (activeIndex) => {
-		if (activeIndex + 1 === totalQuestions && answerChosen) {
-			return (
-				<div>
-					<Alert className="game-over" color="success">
-						<h6 className="alert-heading">
-							Well done! You've completed the Trivia Quiz!
-						</h6>
-						<p>
-							Feel free to improve upon your score by clicking the next button
-							or to try your hand at one of the{" "}
-							<a href=".">other categories!</a> Have a great day!
-						</p>
-					</Alert>
-					{gameOver()}
-				</div>
-			);
-		}
-	};
-
 	return (
 		<>
 			<Card className="card">
 				<CardBody className="question">
-					{endOfGame(activeIndex)}
+					{endOfGame(totalQuestions,answerChosen, gameOver, activeIndex)}
 					<h4>{question}</h4>
 					<br /> {isCorrect(isCorrectAnswer, correct)}
 					<br />
