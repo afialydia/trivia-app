@@ -1,4 +1,4 @@
-import { Set_Up_Types } from "./set_up.utils";
+import { Set_Up_Types, totalQuestions } from "./set_up.utils";
 
 const initialState = {
 	questions: [],
@@ -23,6 +23,9 @@ const set_up_reducer = (state = initialState, action) => {
 				...state,
 				isFetching: false,
 				fetched: true,
+				clicked: false,
+				correct: undefined,
+				score: 0,
 				questions: action.payload,
 				error: "",
 			};
@@ -38,28 +41,35 @@ const set_up_reducer = (state = initialState, action) => {
 				...state,
 				score: (state.score += 1),
 				clicked: true,
-				correct: true
+				correct: true,
+			};
+
+		case Set_Up_Types.SET_CORRECT_ANSWER_LIMIT:
+			return {
+				...state,
+				// score: (state.score += 1),
+				clicked: true,
+				correct: true,
 			};
 
 		case Set_Up_Types.SET_INCORRECT_ANSWER:
 			return {
 				...state,
 				clicked: true,
-				correct: false
+				correct: false,
 			};
 
 		case Set_Up_Types.SET_GAME_OVER:
 			return {
 				...state,
 				score: state.score,
-				clicked: true,
 			};
 
 		case Set_Up_Types.SET_LOAD_QUESTION:
 			return {
 				...state,
 				clicked: false,
-				correct: initialState.correct
+				correct: initialState.correct,
 			};
 
 		case Set_Up_Types.SET_GAME_RESET:

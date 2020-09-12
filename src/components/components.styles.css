@@ -1,19 +1,44 @@
-.btn-secondary.options{
-    width: 30vw;
-    min-width: 200px;
-    max-width: 600px;
-    margin:5px;   
- }
-
- .btn-secondary.options.one {
-background: green;
-
+.btn-secondary.options {
+	width: 30vw;
+	min-width: 200px;
+	max-width: 600px;
+	margin: 5px;
+	background: rgb(254, 188, 9);
+	border: none;
 }
 
-.btn-secondary.options.two {
-/* background: red; */
+.carousel-control-next.one {
+	background: green;
+	height: 60vh;
+	margin: auto 0;
+	border-radius: 100% 0% 0% 100% / 45% 4% 96% 55%;
 }
 
-.carousel-control-next.one{
-background: green;
+.carousel-control-next.two {
+	background: red;
+	height: 60vh;
+	margin: auto 0;
+	border-radius: 100% 0% 0% 100% / 45% 4% 96% 55%;
+}
+
+.game-over {
+	width: 60vw;
+	margin: 0 auto;
+	z-index: 30;
+	position: relative;
+}
+
+.question {
+	width: 70vw;
+	margin: 0 auto;
+}
+
+.card {
+	border: none;
+}
+
+.btn-secondary.settings {
+	margin: 1%;
+	background:blue;
+	border: none;
 }

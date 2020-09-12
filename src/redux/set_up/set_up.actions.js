@@ -1,4 +1,4 @@
-import { Set_Up_Types } from "./set_up.utils";
+import { Set_Up_Types, totalQuestions, totalScore } from "./set_up.utils";
 import axios from "axios";
 
 export const getTriviaQuestions = (data) => (dispatch) => {
@@ -26,9 +26,17 @@ export const loadQuestion = () => (dispatch) => {
 };
 
 export const correctAnswer = () => (dispatch) => {
-	dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER });
+	if (totalScore === totalQuestions) {
+		return dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER_LIMIT });
+	} else {
+		return dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER });
+	}
 };
 
 export const incorrectAnswer = () => (dispatch) => {
 	dispatch({ type: Set_Up_Types.SET_INCORRECT_ANSWER });
+};
+
+export const gameOver = () => (dispatch) => {
+	dispatch({ type: Set_Up_Types.SET_GAME_OVER });
 };

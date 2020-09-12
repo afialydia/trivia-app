@@ -3,17 +3,22 @@ import {
 	Carousel,
 	CarouselItem,
 	CarouselControl,
-	Card,
-	CardBody,
+	
 } from "reactstrap";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import Question from "./question";
-import { loadQuestion} from "../redux/set_up/set_up.actions";
-import {answerChosen} from '../redux/set_up/set_up.utils'
+import { loadQuestion } from "../redux/set_up/set_up.actions";
+import { answerChosen, isCorrectAnswer } from "../redux/set_up/set_up.utils";
 
-const Questions = ({ allQuestions,answerChosen, loadQuestion }) => {
+const Questions = ({
+	allQuestions,
+	answerChosen,
+	loadQuestion,
+	isCorrectAnswer,
+	lastQuestion
+}) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animating, setAnimating] = useState(false);
 
@@ -22,7 +27,13 @@ const Questions = ({ allQuestions,answerChosen, loadQuestion }) => {
 		const nextIndex =
 			activeIndex === allQuestions.length - 1 ? 0 : activeIndex + 1;
 		setActiveIndex(nextIndex);
-		loadQuestion()
+		loadQuestion();
+	};
+	const previous = () => {
+		if (animating) return;
+		const nextIndex =
+			activeIndex === 0 ? allQuestions.length - 1 : activeIndex - 1;
+		setActiveIndex(nextIndex);
 	};
 
 	const slides = allQuestions.map((item) => {
@@ -34,38 +45,45 @@ const Questions = ({ allQuestions,answerChosen, loadQuestion }) => {
 				onExiting={() => setAnimating(true)}
 				onExited={() => setAnimating(false)}
 			>
-				<Card>
-					<CardBody>
-						<Question key={item} props={item} />
-					</CardBody>
-				</Card>
+				<Question key={item} props={item} activeIndex={activeIndex} />
 			</CarouselItem>
 		);
 	});
 
-
 	return (
 		<div>
-			<Carousel autoplay={false} activeIndex={activeIndex}>
+			<Carousel
+				activeIndex={activeIndex}
+				previous={() => previous()}
+				next={() => next()}
+				interval={false}
+			>
 				{slides}
-				<CarouselControl
-					direction="next"
-					directionText="Next"
-					onClickHandler={next}
-					className={`carousel-control-next 
-						${answerChosen ? "one" : ""}`}
-				/>
+
+				{answerChosen ? (
+					<CarouselControl
+						direction="next"
+						directionText="Next"
+						onClickHandler={next}
+						className={`carousel-control-next 
+						${isCorrectAnswer ? "one" : "two"}`}
+					/>
+				) : (
+					""
+				)}
 			</Carousel>
 		</div>
 	);
 };
 
-const mapStateToProps =  createStructuredSelector({
-	answerChosen
+const mapStateToProps = createStructuredSelector({
+	answerChosen,
+	isCorrectAnswer
+	
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	loadQuestion: ()=> dispatch(loadQuestion())
+	loadQuestion: () => dispatch(loadQuestion()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Questions);

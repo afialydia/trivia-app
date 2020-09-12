@@ -12,7 +12,6 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 
 	const handleChange = (e) => {
 		setState({ ...state, [e.target.name]: e.target.value });
-		console.log(state);
 	};
 
 	const handleSubmit = (e) => {
@@ -66,9 +65,9 @@ const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 						id="difficulty"
 						onChange={handleChange}
 					>
-						<option>easy</option>
-						<option>medium</option>
-						<option>hard</option>
+						<option value="easy">Easy</option>
+						<option valuie="medium">Medium</option>
+						<option value="hard">Hard</option>
 					</Input>
 				</FormGroup>
 

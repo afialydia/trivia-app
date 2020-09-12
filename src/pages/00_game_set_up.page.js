@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import SET_UP from "../components/set_up_form.component";
 import { Modal, ModalHeader, ModalBody , Button} from "reactstrap";
 
+import SET_UP from "../components/trivia_settings";
+import '../components/components.styles.css'
+
 const Game_Start = (props) => {
-	const [modal, setModal] = useState(false);
+	const [modal, setModal] = useState(true);
 
 	const toggle = () => setModal(!modal);
 
@@ -30,7 +32,7 @@ const Game_Start = (props) => {
 					
 				</ModalBody>
 			</Modal>
-			<Button
+			<Button className="settings"
 				onClick={() => {
 					toggle();
 				}}
