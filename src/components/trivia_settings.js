@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import getTriviaQuestions from "../redux/set_up/set_up.actions";
+import {getTriviaQuestions, loadQuestion} from "../redux/set_up/set_up.actions";
 import { Form, Label, FormGroup, Input, Button } from "reactstrap";
 
-const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
+const SET_UP = ({ getTriviaQuestions, toggle, loadQuestion }) => {
 	const [state, setState] = useState({
 		amount: "4",
 		category: "31",
@@ -12,7 +12,6 @@ const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
 
 	const handleChange = (e) => {
 		setState({ ...state, [e.target.name]: e.target.value });
-		console.log(state);
 	};
 
 	const handleSubmit = (e) => {
@@ -21,6 +20,7 @@ const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
 		console.log(amount, category, difficulty);
 		getTriviaQuestions({ amount, category, difficulty });
 		toggle()
+		loadQuestion()
 	};
 
 	return (
@@ -65,9 +65,9 @@ const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
 						id="difficulty"
 						onChange={handleChange}
 					>
-						<option>easy</option>
-						<option>medium</option>
-						<option>hard</option>
+						<option value="easy">Easy</option>
+						<option valuie="medium">Medium</option>
+						<option value="hard">Hard</option>
 					</Input>
 				</FormGroup>
 
@@ -79,6 +79,7 @@ const Game_Set_Up = ({ getTriviaQuestions, toggle }) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	getTriviaQuestions: (data) => dispatch(getTriviaQuestions(data)),
+	loadQuestion: ()=> dispatch(loadQuestion())
 });
 
-export default connect(null, mapDispatchToProps)(Game_Set_Up);
+export default connect(null, mapDispatchToProps)(SET_UP);

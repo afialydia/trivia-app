@@ -1,8 +1,34 @@
-import React, { useState } from "react";
-import { Button, Card, CardBody } from "reactstrap";
+import React from "react";
+import { Button, Card, CardBody, Alert } from "reactstrap";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import "./components.styles.css";
 
-const Question = ({ props, right_answer }) => {
+import {
+	correctAnswer,
+	gameOver,
+	incorrectAnswer,
+} from "../redux/set_up/set_up.actions";
+import {
+	isCorrectAnswer,
+	totalQuestions,
+	lastQuestion,
+	answerChosen,
+	totalScore,
+} from "../redux/set_up/set_up.utils";
+
+const Question = ({
+	props,
+	activeIndex,
+	correctAnswer,
+	incorrectAnswer,
+	isCorrectAnswer,
+	totalQuestions,
+	answerChosen,
+	gameOver,
+	totalScore,
+}) => {
 	const question = decodeURIComponent(props.question);
 	const correct = decodeURIComponent(props.correct_answer);
 	const options = [];
@@ -22,30 +48,54 @@ const Question = ({ props, right_answer }) => {
 		options[j] = temp;
 	}
 
-	// const { status, setStatus } = useState("");
+	const isCorrect = (isCorrectAnswer, correct) => {
+		if (isCorrectAnswer === undefined) {
+			return "";
+		} else if (isCorrectAnswer === true) {
+			return <h5 style={{ color: "green" }}>Correct!</h5>;
+		}
+	return <h5 style={{ color: "red" }}>{`Incorrect! The answer is ${correct}!`}</h5>;
+	};
 
-	// const result = (option) => {
-	// 	if (option == correct) {
-	// 		setStatus("Congrats! You're right!");
-	// 	} else {
-	// 		setStatus("Oops! No Dice.");
-	// 	}
-	// };
-	const [clicked, setClicked] = useState(false);
+	const endOfGame = (activeIndex) => {
+		if (activeIndex + 1 === totalQuestions && answerChosen) {
+			return (
+				<div>
+					
+					<Alert className="game-over" color="success">
+						<h6 className="alert-heading">Well done! You've completed the Trivia Quiz!</h6>
+						<p>
+							Feel free to improve upon your score by clicking the next button or to trying
+							your hand at one of the <a href=".">other categories!</a> Have a great day!
+						</p>
+					</Alert>
+					{gameOver()}
+				</div>
+			);
+		}
+	};
+
+
+
+	
 
 	return (
 		<>
-			<Card>
-				<CardBody>
+			<Card className="card">
+				<CardBody className="question">
+					{endOfGame(activeIndex)}
 					<h4>{question}</h4>
+					<br /> {isCorrect(isCorrectAnswer,correct)}
+					<br />
 					{options.map((option) => {
 						return (
-							<div>
+							<div key={option}>
 								<Button
-									onClick={()=> setClicked(true)}
-									className={`options ${
-										option === correct && clicked ? "one" : "two" 
-									}`}
+									onClick={() => {
+										option === correct ? correctAnswer() : incorrectAnswer();	
+									}}
+									disabled={answerChosen? true:false}
+									className="options"
 									key={option}
 								>
 									{option}
@@ -53,12 +103,30 @@ const Question = ({ props, right_answer }) => {
 							</div>
 						);
 					})}
-
-					{/* <h4>{status}</h4> */}
+					<br />
+					<h6>
+						{" "}
+						Question: {activeIndex + 1} of {totalQuestions}{" "}
+					</h6>
+					<h6>Score: {totalScore}</h6>
 				</CardBody>
 			</Card>
 		</>
 	);
 };
 
-export default Question;
+const mapStateToProps = createStructuredSelector({
+	isCorrectAnswer,
+	totalQuestions,
+	lastQuestion,
+	answerChosen,
+	totalScore,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	correctAnswer: () => dispatch(correctAnswer()),
+	incorrectAnswer: () => dispatch(incorrectAnswer()),
+	gameOver: () => dispatch(gameOver()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);
