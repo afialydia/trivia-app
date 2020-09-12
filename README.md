@@ -39,16 +39,16 @@ This app was built using create-react-app (CRA). Follow the steps below to setup
 ### Component Architecture
 ---
 #### Components Folder
-    Holds simple, smaller components used for trivia settings, and to display individual question and questions carousel. Also holds styles css file.
+Holds simple, smaller components used for trivia settings, and to display individual question and questions carousel. Also holds styles css file.
 
 #### Hooks Folder
-    Holds the hooks used for end of game staging and whether or not user has chosen the correct answer.
+Holds the hooks used for end of game staging and whether or not user has chosen the correct answer.
 
 #### Pages Folder
-    Staging area for two modes of app, game set up and game play. Smaller components are imported into these files and returned as part of the larger components.
+Staging area for two modes of app, game set up and game play. Smaller components are imported into these files and returned as part of the larger components.
 
-#### Redux
-    All state is managed in redux folder. File structure is set up to allow for additions to state. Actions, reducers & utils placed in folder within redux folder that cooresponds with the area of state that is being managed. 
+#### Redux Folder
+All state is managed in redux folder. File structure is set up to allow for additions to state. Actions, reducers & utils placed in folder within redux folder that cooresponds with the area of state that is being managed. 
 
 
 ### Tech Stack Used:
