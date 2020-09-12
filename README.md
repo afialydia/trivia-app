@@ -41,15 +41,15 @@ This app was built using create-react-app (CRA). Follow the steps below to setup
 
 ### Tech Stack Used:
 
-- [Axios]("https://github.com/axios/axios")
-- [Bootstrap]("https://getbootstrap.com/")
--   [React]("https://reactjs.org/")
--  [React-Redux]("https://react-redux.js.org/")
--   [Reactstrap]("https://reactstrap.github.io/")
--  [Redux]("https://redux.js.org/")
--  [Redux-logger]("https://www.npmjs.com/package/redux-logger")
-- [Redux-thunk]("https://www.npmjs.com/package/redux-thunk")
-- [Reselect]("https://github.com/reduxjs/reselect")
+- [Axios](https://github.com/axios/axios)
+- [Bootstrap](https://getbootstrap.com/)
+- [React](https://reactjs.org/)
+- [React-Redux](https://react-redux.js.org/)
+- [Reactstrap](https://reactstrap.github.io/)
+- [Redux](https://redux.js.org/)
+- [Redux-logger](https://www.npmjs.com/package/redux-logger)
+- [Redux-thunk](https://www.npmjs.com/package/redux-thunk)
+- [Reselect](https://github.com/reduxjs/reselect)
 
 
 ## Support & Ownership
