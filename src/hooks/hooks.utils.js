@@ -2,22 +2,31 @@
 import React from "react";
 
 //styles
-import { Alert } from "reactstrap";
+import { Alert, Modal, ModalHeader, ModalBody , Button} from "reactstrap";
 
+
+const ResultHeight = ({color=null,answer=null}) =>{
+	return(
+		<div style={{border:'none', height:'5vh', margin:'2%auto',display:'flex', flexDirection:'column', alignItems:'center'}}>
+			<h5 style={{ hight:'3vh',color: {color}}}>{answer}</h5>
+		</div>
+	)
+}
 
 // display's whether question was answered correctly or not
 export	const isCorrect = (isCorrectAnswer, correct) => {
 		//initial state upon "question load"
         if (isCorrectAnswer === undefined) {
-			return "";
+			return <ResultHeight/>;
 
         // correct answer
 		} else if (isCorrectAnswer === true) {
-			return <h5 style={{ color: "green" }}>Correct!</h5>;
+			return <ResultHeight color={'green'} answer={'Correct!'} />
 		}
         // incorrect answer 
 		return (
-			<h5 style={{ color: "red" }}>{`Incorrect! The answer is ${correct}!`}</h5>
+			<ResultHeight color={'red'} answer={`Incorrect! The answer is ${correct}.`} />
+
 		);
 	};
 
