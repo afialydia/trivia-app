@@ -1,5 +1,5 @@
 //Libraries
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -20,8 +20,7 @@ import {
 	answerChosen,
 	totalScore,
 } from "../redux/set_up/set_up.utils";
-import { isCorrect, endOfGame } from '../hooks/hooks.utils.js'
-
+import { isCorrect, endOfGame } from "../hooks/hooks.utils.js";
 
 const Question = ({
 	props,
@@ -34,6 +33,8 @@ const Question = ({
 	gameOver,
 	totalScore,
 }) => {
+	const [triviaAnswers, setTriviaAnswers] = useState([]);
+
 	const question = decodeURIComponent(props.question);
 	const correct = decodeURIComponent(props.correct_answer);
 	const options = [];
@@ -45,23 +46,38 @@ const Question = ({
 		options.push(incorrect);
 	});
 
+
 	//randomizing options so that correct answer does not sit in the same place each time
-	for (let i = options.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * i);
-		const temp = options[i];
-		options[i] = options[j];
-		options[j] = temp;
-	}
+	useEffect(() => {
+		console.log('look',options)
+		let randomizedIndex = (i) => {
+			return Math.floor(Math.random() * i);
+		};
+
+		for (let i = options.length - 1; i > 0; i--) {
+			const j = randomizedIndex(i);
+			const temp = options[i];
+			options[i] = options[j];
+			options[j] = temp;
+		
+		}
+		return setTriviaAnswers(options);
+		 
+	}, []);
+
+
+
 
 	return (
 		<>
 			<Card className="card">
 				<CardBody className="question">
-					{endOfGame(totalQuestions,answerChosen, gameOver, activeIndex)}
-					<h4>{question}</h4>
-					<br /> {isCorrect(isCorrectAnswer, correct)}
+					{endOfGame(totalQuestions, answerChosen, gameOver, activeIndex)}
+					<div>
+						<h4>{question}</h4>
+					</div>
 					<br />
-					{options.map((option) => {
+					{triviaAnswers.map((option) => {
 						return (
 							<div key={option}>
 								<Button
@@ -79,12 +95,7 @@ const Question = ({
 							</div>
 						);
 					})}
-					<br />
-					<h6>
-						{" "}
-						Question: {activeIndex + 1} of {totalQuestions}{" "}
-					</h6>
-					<h6>Score: {totalScore}</h6>
+					{isCorrect(isCorrectAnswer, correct)}
 				</CardBody>
 			</Card>
 		</>

@@ -4,25 +4,25 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 //styles
-import {
-	Carousel,
-	CarouselItem,
-	CarouselControl
-} from "reactstrap";
+import { Carousel, CarouselItem, CarouselControl } from "reactstrap";
 
 //files
 import Question from "./question";
 import { loadQuestion } from "../redux/set_up/set_up.actions";
-import { answerChosen, isCorrectAnswer } from "../redux/set_up/set_up.utils";
-
-
+import {
+	answerChosen,
+	isCorrectAnswer,
+	totalScore,
+	totalQuestions,
+} from "../redux/set_up/set_up.utils";
 
 const Questions = ({
 	allQuestions,
 	answerChosen,
 	loadQuestion,
-	isCorrectAnswer
-	
+	isCorrectAnswer,
+	totalQuestions,
+	totalScore,
 }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animating, setAnimating] = useState(false);
@@ -65,7 +65,6 @@ const Questions = ({
 			>
 				{slides}
 
-
 				{answerChosen ? (
 					<CarouselControl
 						direction="next"
@@ -78,14 +77,22 @@ const Questions = ({
 					""
 				)}
 			</Carousel>
+			<>
+				<h6>
+					{" "}
+					Question: {activeIndex + 1} of {totalQuestions}{" "}
+				</h6>
+				<h6>Score: {totalScore}</h6>
+			</>
 		</div>
 	);
 };
 
 const mapStateToProps = createStructuredSelector({
 	answerChosen,
-	isCorrectAnswer
-	
+	isCorrectAnswer,
+	totalScore,
+	totalQuestions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
