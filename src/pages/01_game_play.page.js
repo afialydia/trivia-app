@@ -8,28 +8,21 @@ import { selectAllQuestions } from "../redux/set_up/set_up.utils";
 import Questions from "../components/questions";
 
 const GAME_PLAY = ({ selectAllQuestions }) => {
-
-
 	return (
 		<div>
-			
-
 			{selectAllQuestions.length > 1 ? (
-				
-						 <Questions allQuestions={selectAllQuestions} />
-                            
-			
+				<Questions allQuestions={selectAllQuestions} />
 			) : (
-				<div><h1>Let Get Trivial!</h1></div>
+				<div>
+					<h1>Let Get Trivial!</h1>
+				</div>
 			)}
-
-		
 		</div>
 	);
 };
 
 const mapStateToProps = createStructuredSelector({
-	selectAllQuestions
+	selectAllQuestions,
 });
 
 export default connect(mapStateToProps)(GAME_PLAY);
