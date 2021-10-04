@@ -5,7 +5,16 @@ import { createStructuredSelector } from "reselect";
 
 //styles
 import "./styles.css";
-import { Button, Card, CardBody } from "reactstrap";
+import {
+	Center,
+	Container,
+	Flex,
+	chakra,
+	Box,
+	Heading,
+	useDisclosure,
+	Button,
+} from "@chakra-ui/react";
 
 //files
 import {
@@ -31,9 +40,10 @@ const Question = ({
 	totalQuestions,
 	answerChosen,
 	gameOver,
-	totalScore,
+	totalScore
 }) => {
 	const [triviaAnswers, setTriviaAnswers] = useState([]);
+	let { isOpen, onOpen, onClose } = useDisclosure();
 
 	const question = decodeURIComponent(props.question);
 	const correct = decodeURIComponent(props.correct_answer);
@@ -46,10 +56,8 @@ const Question = ({
 		options.push(incorrect);
 	});
 
-
 	//randomizing options so that correct answer does not sit in the same place each time
 	useEffect(() => {
-		console.log('look',options)
 		let randomizedIndex = (i) => {
 			return Math.floor(Math.random() * i);
 		};
@@ -59,46 +67,116 @@ const Question = ({
 			const temp = options[i];
 			options[i] = options[j];
 			options[j] = temp;
-		
 		}
 		return setTriviaAnswers(options);
-		 
 	}, []);
 
-
-
-
 	return (
-		<>
-			<Card className="card">
-				<CardBody className="question">
-					{endOfGame(totalQuestions, answerChosen, gameOver, activeIndex)}
-					<div>
-						<h4>{question}</h4>
-					</div>
-					<br />
+		<Container
+			display="flex"
+			// border="solid red"
+			flexDirection="column"
+			placeItems="center"
+			marginTop="2vh"
+			justifyContent="space-between"
+			flexGrow="1"
+			height={{ sm: "auto", lg: "md" }}
+		>
+			<Flex
+				direction="column"
+				justify="space-evenly"
+				// border="solid springgreen"
+				placeItems="center"
+				flexGrow="1"
+			>
+				{endOfGame(
+					totalQuestions,
+					totalScore,
+					answerChosen,
+					gameOver,
+					activeIndex,
+					isOpen,
+					onOpen,
+					onClose
+				)}
+				<Box
+				// border="solid teal"
+				>
+					<Heading
+						as="h5"
+						fontSize={{ sm: "sm", md: "lg" }}
+						letterSpacing="wide"
+						lineHeight="short"
+						fontWeight="hairline"
+						fontFamily="Montserrat"
+						mt={{ base: 3, sm: 5, md: 5 }}
+						mx={{ sm: "auto", lg: 0 }}
+						mb={6}
+						lineHeight="base"
+					>
+						<chakra.span
+							minH={{ sm: "65px", lg: "auto" }}
+							display={{ base: "block" }}
+						>
+							{question}{" "}
+						</chakra.span>
+					</Heading>
+				</Box>
+				<Flex
+					direction="column"
+					height="35vh"
+					justify="space-around"
+					// border="solid blue"
+				>
 					{triviaAnswers.map((option) => {
 						return (
-							<div key={option}>
-								<Button
-									onClick={() => {
-										option === correct
-											? correctAnswer(totalScore, totalQuestions)
-											: incorrectAnswer();
-									}}
-									disabled={answerChosen ? true : false}
-									className="options"
-									key={option}
-								>
+							<Button
+								flexDirection="column"
+								key={option}
+								width={{ base: "xs", md: "sm" }}
+								fontSize={{ sm: "xs", md: "sm" }}
+								color="rgb(237,111,151)"
+								background="rgb(129,25,40)"
+								my="1vh"
+								type="submit"
+								className="start-button"
+								padding="2px"
+								minH="auto"
+								textAlign="center"
+								justifyContent="start"
+								style={{
+									whiteSpace: "normal",
+									wordWrap: "break-word",
+								}}
+								_hover={{ background: "rgb(216,218,197)" }}
+								_active={{ background: "rgb(244,246,222)" }}
+								font-weight="500"
+								opacity="1"
+								onClick={() => {
+									option === correct
+										? correctAnswer(totalScore, totalQuestions)
+										: incorrectAnswer();
+								}}
+								disabled={answerChosen ? true : false}
+								className={`options
+									${option == correct ? "correct" : ""}`}
+								key={option}
+							>
+								<Center padding="2px" h="100%">
 									{option}
-								</Button>
-							</div>
+								</Center>
+							</Button>
 						);
 					})}
-					{isCorrect(isCorrectAnswer, correct)}
-				</CardBody>
-			</Card>
-		</>
+				</Flex>
+			</Flex>
+			<Center
+				// border="solid grey"
+				width="xs"
+			>
+				{isCorrect(isCorrectAnswer, correct)}
+			</Center>
+		</Container>
 	);
 };
 

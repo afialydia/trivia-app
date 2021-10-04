@@ -9,6 +9,7 @@ export const getTriviaQuestions = (data) => (dispatch) => {
 	dispatch({ type: Set_Up_Types.GET_START });
 	axios
 		.get(
+			// `https://opentdb.com/api.php?amount=4&category=23&difficulty=easy&type=multiple&encode=url3986`
 			`https://opentdb.com/api.php?amount=${data.amount}&category=${data.category}&difficulty=${data.difficulty}&type=multiple&encode=url3986`
 		)
 		.then(
@@ -25,16 +26,15 @@ export const getTriviaQuestions = (data) => (dispatch) => {
 		);
 };
 
-export const loadQuestion = () => (dispatch) => {
+export const loadQuestion = (props) => (dispatch) => {
 	dispatch({ type: Set_Up_Types.SET_LOAD_QUESTION });
 };
 
 export const correctAnswer = (totalScore, totalQuestions) => (dispatch) => {
-	//error handling for score limit	
-		totalScore === totalQuestions
-			? dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER_LIMIT })
-			: dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER });
-	
+	//error handling for score limit
+	totalScore === totalQuestions
+		? dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER_LIMIT })
+		: dispatch({ type: Set_Up_Types.SET_CORRECT_ANSWER });
 };
 
 export const incorrectAnswer = () => (dispatch) => {

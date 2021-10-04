@@ -1,53 +1,128 @@
 //libraries
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 //styles
-import { Alert, Modal, ModalHeader, ModalBody , Button} from "reactstrap";
+import {
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalBody,
+	Center,
+	Flex,
+	Text,
+	Button,
+	Heading,
+	Link,
+} from "@chakra-ui/react";
 
-
-const ResultHeight = ({color=null,answer=null}) =>{
-	return(
-		<div style={{border:'none', height:'5vh', margin:'2%auto',display:'flex', flexDirection:'column', alignItems:'center'}}>
-			<h5 style={{ hight:'3vh',color: {color}}}>{answer}</h5>
-		</div>
-	)
-}
+const ResultHeight = ({ color = null, answer = null }) => {
+	return (
+		<Center
+			style={{
+				// border: "solid",
+				minHeight: "70px",
+			}}
+		>
+			<Heading
+				as="h5"
+				size="sm"
+				letterSpacing="widest"
+				lineHeight="short"
+				style={{ color: { color } }}
+			>
+				{answer}
+			</Heading>
+		</Center>
+	);
+};
 
 // display's whether question was answered correctly or not
-export	const isCorrect = (isCorrectAnswer, correct) => {
-		//initial state upon "question load"
-        if (isCorrectAnswer === undefined) {
-			return <ResultHeight/>;
+export const isCorrect = (isCorrectAnswer, correct) => {
+	//initial state upon "question load"
+	if (isCorrectAnswer === undefined) {
+		return <ResultHeight />;
 
-        // correct answer
-		} else if (isCorrectAnswer === true) {
-			return <ResultHeight color={'green'} answer={'Correct!'} />
-		}
-        // incorrect answer 
-		return (
-			<ResultHeight color={'red'} answer={`Incorrect! The answer is ${correct}.`} />
-
-		);
-	};
-
+		// correct answer
+	} else if (isCorrectAnswer === true) {
+		return <ResultHeight color={"green"} answer={"Correct!"} />;
+	}
+	// incorrect answer
+	return (
+		<ResultHeight
+			color={"red"}
+			answer={`Incorrect! The answer is ${correct}.`}
+		/>
+	);
+};
 
 //end of game handling, sends alert to player when they have chosen an answer on the last question
-export const endOfGame = (totalQuestions, answerChosen, gameOver ,activeIndex) => {
-		if (activeIndex + 1 === totalQuestions && answerChosen) {
-			return (
-				<div>
-					<Alert className="game-over" color="success">
-						<h6 className="alert-heading">
-							Well done! You've completed the Trivia Quiz!
-						</h6>
-						<p>
-							Feel free to improve upon your score by clicking the next button
-							or to try your hand at one of the{" "}
-							<a href=".">other categories</a>! Have a great day!
-						</p>
-					</Alert>
-					{gameOver()}
-				</div>
-			);
-		}
-	};
+
+export const endOfGame = (
+	totalQuestions,
+	totalScore,
+	answerChosen,
+	gameOver,
+	activeIndex,
+	onClose
+) => {
+	if (activeIndex + 1 === totalQuestions && answerChosen) {
+		return (
+			<Modal onClose={onClose} isCentered size={"lg"} isOpen>
+				<ModalOverlay />
+				<ModalContent background="transparent">
+					<ModalBody background="transparent">
+						<Flex
+							textAlign="center"
+							h="sm"
+							maxH="585px"
+							p="25px"
+							my="auto"
+							mx="auto"
+							direction="column"
+							align="space-between"
+							justifyContent="space-evenly"
+							background="rgb(237,111,151)"
+							color="rgb(129,25,40)"
+							borderRadius="xl"
+							shadow="lg"
+							// border="solid yellow"
+						>
+							<Heading>Boy Howdy!</Heading>
+							{/* <Spacer/> */}
+							<Text fontWeight="bold">
+								{totalScore < totalQuestions / 2
+									? "Better luck next time! "
+									: "Well Done! "}
+								<br />
+								You got {totalScore} out of {totalQuestions} correct!
+							</Text>{" "}
+							<Link
+								_hover={{
+									color: "rgb(129,25,40)",
+									textDecoration: "none",
+								}}
+								_active={{ color: "rgb(216,218,197)" }}
+								as={RouterLink}
+								to="/"
+							>
+								<Button
+									color="rgb(237,111,151)"
+									background="rgb(129,25,40)"
+									my="1vh"
+									type="button"
+									w="100%"
+									// className="start-button"
+									_hover={{ background: "rgb(216,218,197)" }}
+								>
+									Select a new Trivia Topic.
+								</Button>
+							</Link>{" "}
+						</Flex>
+					</ModalBody>
+				</ModalContent>{" "}
+				{gameOver()}
+			</Modal>
+		);
+	}
+};
