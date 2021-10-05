@@ -70,7 +70,7 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 			>
 				<Box>
 					<Heading
-						fontSize={{ base: "3xl", sm: "4xl" }}
+						fontSize={{ base: "2xl", sm: "3xl", md:'4xl' }}
 						fontFamily="Shrikhand"
 						letterSpacing="wider"
 						lineHeight="short"
@@ -108,7 +108,7 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 									<FormLabel>
 										<Heading
 											as="h5"
-											size="md"
+											size={{base:"sm",sm:"md"}}
 											letterSpacing="widest"
 											lineHeight="short"
 										>
@@ -135,7 +135,7 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 										{" "}
 										<Heading
 											as="h5"
-											size="md"
+											size={{base:"sm",sm:"md"}}
 											letterSpacing="widest"
 											lineHeight="short"
 										>
@@ -161,7 +161,7 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 										{" "}
 										<Heading
 											as="h5"
-											size="md"
+											size={{base:"sm",sm:"md"}}
 											letterSpacing="widest"
 											lineHeight="short"
 										>

@@ -9,6 +9,7 @@ import { Container, Center } from "@chakra-ui/react";
 //files
 import GAME_PLAY from "./pages/01_game_play.page";
 import TriviaSettings from "./components/trivia_settings";
+import questions from "./components/questions";
 
 function App() {
 	return (
@@ -25,8 +26,10 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={TriviaSettings} />
 					<Route exact path="/game" component={GAME_PLAY} />
+					<Route exact path="/ui" component={questions} />
 				</Switch>
 			</Center>
+			
 		</Container>
 	);
 }

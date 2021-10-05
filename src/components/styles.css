@@ -1,14 +1,34 @@
 .carousel-card {
-	/* display: flex; */
-	/* border: solid; */
-	/* max-width: 500px; */
+	/* border: solid 1px; */
+	/* margin: 0auto; */
+	max-width: 80vw;
 	background: rgb(237, 111, 151);
-	flex-grow: 1;
+	/* flex-grow: 1; */
+	/* padding:10px; */
+	padding-top: 10%;
 	height: auto;
+	width: auto;
+	box-sizing: content-box;
+	width: 100%;
+	max-width: 540px;
+	/* padding:'15px' */
+	border-radius: 30px;
 }
 
-.carousel-card.active{
-	flex-grow:1;
+@media (max-width: 425px) {
+	.carousel-card.active {
+		/* background: red; */
+		width: "80vw !important";
+	}
+}
+
+/* w={{ base: "80vw", sm: "85vw" }} */
+
+.carousel-card.active {
+	/* flex-grow: 1; */
+	/* border: solid blue; */
+	box-sizing: content-box;
+	max-width: 540px !important;
 	/* background: red; */
 }
 

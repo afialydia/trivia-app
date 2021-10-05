@@ -40,7 +40,7 @@ const Question = ({
 	totalQuestions,
 	answerChosen,
 	gameOver,
-	totalScore
+	totalScore,
 }) => {
 	const [triviaAnswers, setTriviaAnswers] = useState([]);
 	let { isOpen, onOpen, onClose } = useDisclosure();
@@ -80,7 +80,10 @@ const Question = ({
 			marginTop="2vh"
 			justifyContent="space-between"
 			flexGrow="1"
-			height={{ sm: "auto", lg: "md" }}
+			height={{ md: "auto", lg: "md" }}
+			w={{ base: "80vw", sm: "85vw" }}
+			maxW="530px"
+			// p="55px"
 		>
 			<Flex
 				direction="column"
@@ -100,7 +103,9 @@ const Question = ({
 					onClose
 				)}
 				<Box
-				// border="solid teal"
+					w={{ base: "80vw", sm: "85vw" }}
+					maxW="545px"
+					// border="solid teal"
 				>
 					<Heading
 						as="h5"
@@ -109,14 +114,15 @@ const Question = ({
 						lineHeight="short"
 						fontWeight="hairline"
 						fontFamily="Montserrat"
-						mt={{ base: 3, sm: 5, md: 5 }}
-						mx={{ sm: "auto", lg: 0 }}
-						mb={6}
+						// mt={{ base: 3, sm: 5, md: 5 }}
+						// mx={{ sm: "auto", lg: 0 }}
+						// mb={6}
 						lineHeight="base"
+						px="30px"
 					>
 						<chakra.span
 							minH={{ sm: "65px", lg: "auto" }}
-							display={{ base: "block" }}
+							// display={{ base: "flex" }} border='solid'
 						>
 							{question}{" "}
 						</chakra.span>
@@ -133,14 +139,14 @@ const Question = ({
 							<Button
 								flexDirection="column"
 								key={option}
-								width={{ base: "xs", md: "sm" }}
+								width={{ base: "60vw", md: "sm" }}
 								fontSize={{ sm: "xs", md: "sm" }}
 								color="rgb(237,111,151)"
 								background="rgb(129,25,40)"
 								my="1vh"
 								type="submit"
 								className="start-button"
-								padding="2px"
+								// padding="2px"
 								minH="auto"
 								textAlign="center"
 								justifyContent="start"
@@ -148,6 +154,8 @@ const Question = ({
 									whiteSpace: "normal",
 									wordWrap: "break-word",
 								}}
+								
+
 								_hover={{ background: "rgb(216,218,197)" }}
 								_active={{ background: "rgb(244,246,222)" }}
 								font-weight="500"

@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 //styles
 import "bootstrap/dist/css/bootstrap.min.css";

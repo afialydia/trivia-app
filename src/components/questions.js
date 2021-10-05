@@ -90,21 +90,21 @@ ${isCorrectAnswer ? "one" : "two"}`}
 	};
 
 	let mock = [
-		{
-			correct_answer: "Andrew%20Jackson",
-			incorrect_answers: [
-				"Harry%20S.%20Truman",
-				"Martin%20Van%20Buren",
-				"John%20Quincy%20Adams",
-			],
-			question:
-				"The%20%22Trail%20of%20Tears%22%20was%20a%20result%20of%20which%20United%20States%20President%27s%20Indian%20Removal%20Policy%3F",
-		},
+		// {
+		// 	correct_answer: "Andrew%20Jackson",
+		// 	incorrect_answers: [
+		// 		"Harry%20S.%20Truman",
+		// 		"Martin%20Van%20Buren",
+		// 		"John%20Quincy%20Adams",
+		// 	],
+		// 	question:
+		// 		"The%20%22Trail%20of%20Tears%22%20was%20a%20result%20of%20which%20United%20States%20President%27s%20Indian%20Removal%20Policy%3F",
+		// },
 		{
 			correct_answer: "Poland%20and%20Lithuania",
 			incorrect_answers: [
 				"Hutu%20and%20Rwanda",
-				"Filthy%20Acts%20done%20For%20A%20REASONABLE%20PRICEFilthy%20Acts%20done%20For%20A%20REASONABLE%20PRICE",
+				"Filthy%20Acts%20done%20For%20A%20REASONABLE prices",
 				"Bangladesh%20and%20Bhutan",
 			],
 			question:
@@ -117,7 +117,6 @@ ${isCorrectAnswer ? "one" : "two"}`}
 			<CarouselItem
 				className="carousel-card"
 				tag="Flex"
-				// styles={{ border: "solid gold" }}
 				key={item.question}
 				onExiting={() => setAnimating(true)}
 				onExited={() => setAnimating(false)}
@@ -135,79 +134,56 @@ ${isCorrectAnswer ? "one" : "two"}`}
 	let lastQuest = activeIndex + 1 === totalQuestions;
 
 	return (
-
-	<Grid
-			templateColumns={{ base: "repeat(1,1fr)", md: "repeat(2, 1fr)" }}
+		<Grid
+			templateColumns={{ base: "repeat(1,1fr)", lg: "repeat(2, 1fr)" }}
 			gap={0}
 			place-items="center"
 			h="100vh"
-		
-		>	
-
+			// border='solid'
+		>
 			<Flex
 				textAlign="center"
-				w={{ base: "auto", sm: "85vw" }}
+				w={{ base: "80vw", sm: "85vw" }}
 				maxW="545px"
 				height="93.25vh"
 				maxH="585px"
-				p="25px"
 				my="auto"
 				mx="auto"
 				direction="column"
-				align="space-between"
-				justifyContent="space-between"
+				align="center"
+				justifyContent="center"
 				background="rgb(237,111,151)"
 				color="rgb(129,25,40)"
 				borderRadius="xl"
 				shadow="lg"
 				// border="solid yellow"
 			>
-				<Center
-					flexGrow="1"
-					// border="solid purple"
-					//  height={{ base: "60vh", md: "73vh" }}
-				>
-					<Carousel
-						// border="solid teal"
-						activeIndex={activeIndex}
-						previous={() => previous()}
-						next={() => next()}
-						interval={false}
-					>
-						{slides}
-					</Carousel>
-				</Center>
-
 				<Flex
-					justify="center"
-					display={{ sm: "flex", md: "none" }}
-					// border="solid blue"
 					direction="column"
-					minH="14vh"
+					// border="solid"
+					// padding-bottom='15px'
+					h="98%"
 				>
-					<chakra.span
-						textAlign="center"
-						// minH="60px"
-						// height="auto"
-						flexGrow="1"
-						display={{ base: "block" }}
-					>
-						{progressArrow(answerChosen, lastQuest)}
-					</chakra.span>{" "}
-					{/* <Spacer /> */}{" "}
 					<Flex
-						display="flex"
-						// border="solid"
-						justify="space-between"
+						flexGrow="1"
+						// border="solid orange"
+						height={{ base: "50vh", sm: "50vh", md: "73vh" }}
+						direction="column"
+						justifyContent="space-around"
+						align="center"
 					>
 						<Heading
-							fontSize="md"
+							fontSize="lg"
 							fontFamily="Shrikhand"
 							letterSpacing="wider"
 							lineHeight="short"
 							fontWeight="hairline"
 							textAlign="center"
 							color="rgb(129,25,40)"
+							marginTop="5%"
+							w="50vw"
+							// border="solid"
+							display={{ base: "block", lg: "none" }}
 						>
 							<Link
 								_hover={{
@@ -221,34 +197,71 @@ ${isCorrectAnswer ? "one" : "two"}`}
 								Boy Howdy Trivia Bodanza
 							</Link>
 						</Heading>
-						<Heading
-							fontSize="md"
-							fontFamily="Shrikhand"
-							letterSpacing="wider"
-							lineHeight="short"
-							fontWeight="hairline"
-							textAlign="center"
-							color="rgb(129,25,40)"
+						<Carousel
+							// border="solid teal"
+							activeIndex={activeIndex}
+							previous={() => previous()}
+							next={() => next()}
+							interval={false}
 						>
-							{" "}
-							<chakra.span color="rgb(216,218,197)"> {totalScore} </chakra.span>
-						</Heading>
-						<Heading
-							fontSize={{ base: "md", sm: "md" }}
-							fontFamily="Shrikhand"
-							letterSpacing="wider"
-							lineHeight="short"
-							fontWeight="hairline"
+							{slides}
+						</Carousel>
+					</Flex>
+
+					<Flex
+						justify="center"
+						display={{ sm: "flex", md: "none" }}
+						// border="solid red"
+						direction="column"
+						minH="14vh"
+					>
+						<chakra.span
 							textAlign="center"
-							color="rgb(129,25,40)"
+							minH="60px"
+							// height="auto"
+							flexGrow="1"
+							display={{ base: "block" }}
 						>
-							<chakra.span display={{ base: "block" }}>
-								{activeIndex + 1} of {totalQuestions}{" "}
-							</chakra.span>{" "}
-						</Heading>{" "}
+							{progressArrow(answerChosen, lastQuest)}
+						</chakra.span>{" "}
+						<Spacer />{" "}
+						<Flex
+							// border="solid"
+							justify="space-around"
+						>
+							<Heading
+								fontSize="md"
+								fontFamily="Shrikhand"
+								letterSpacing="wider"
+								lineHeight="short"
+								fontWeight="hairline"
+								textAlign="center"
+								color="rgb(129,25,40)"
+							>
+								{" "}
+								<chakra.span color="rgb(216,218,197)">
+									{" "}
+									{totalScore}{" "}
+								</chakra.span>
+							</Heading>
+							<Heading
+								fontSize={{ base: "md", sm: "md" }}
+								fontFamily="Shrikhand"
+								letterSpacing="wider"
+								lineHeight="short"
+								fontWeight="hairline"
+								textAlign="center"
+								color="rgb(129,25,40)"
+							>
+								<chakra.span display={{ base: "block" }}>
+									{activeIndex + 1} of {totalQuestions}{" "}
+								</chakra.span>{" "}
+							</Heading>{" "}
+						</Flex>
 					</Flex>
 				</Flex>
 			</Flex>
+
 			<Flex
 				display={{ base: "none", md: "flex" }}
 				justify="center"
@@ -263,6 +276,7 @@ ${isCorrectAnswer ? "one" : "two"}`}
 					fontWeight="hairline"
 					textAlign="center"
 					color="rgb(129,25,40)"
+					display={{ base: "none", lg: "block" }}
 				>
 					<chakra.span display={{ base: "block" }}>Boy Howdy </chakra.span>
 					<chakra.span display={{ base: "block" }}>Trivia Bodanza </chakra.span>
