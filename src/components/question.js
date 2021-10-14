@@ -11,7 +11,6 @@ import {
 	Flex,
 	chakra,
 	Box,
-	Heading,
 	useDisclosure,
 	Button,
 } from "@chakra-ui/react";
@@ -77,13 +76,15 @@ const Question = ({
 			// border="solid red"
 			flexDirection="column"
 			placeItems="center"
-			marginTop="2vh"
-			justifyContent="space-between"
+			// marginTop="2%"
+			// justifyContent="space-between"
 			flexGrow="1"
-			height={{ md: "auto", lg: "md" }}
-			w={{ base: "80vw", sm: "85vw" }}
+			// height={{ md: "auto", lg: "md" }}
+			// w={{ base: "80%", sm: "85%" }}
 			maxW="530px"
-			// p="55px"
+			minH="100%"
+			w="100%"
+			px="0"
 		>
 			<Flex
 				direction="column"
@@ -91,6 +92,8 @@ const Question = ({
 				// border="solid springgreen"
 				placeItems="center"
 				flexGrow="1"
+				w="100%"
+				h="100%"
 			>
 				{endOfGame(
 					totalQuestions,
@@ -103,62 +106,54 @@ const Question = ({
 					onClose
 				)}
 				<Box
-					w={{ base: "80vw", sm: "85vw" }}
+					w="100%"
 					maxW="545px"
 					// border="solid teal"
 				>
-					<Heading
-						as="h5"
+					<chakra.div
 						fontSize={{ sm: "sm", md: "lg" }}
 						letterSpacing="wide"
 						lineHeight="short"
 						fontWeight="hairline"
 						fontFamily="Montserrat"
 						// mt={{ base: 3, sm: 5, md: 5 }}
-						// mx={{ sm: "auto", lg: 0 }}
-						// mb={6}
-						lineHeight="base"
-						px="30px"
+						mx={{ sm: "auto", lg: 0 }}
+						mb="2%"
+						// minH={{ sm: "8em", lg: "auto" }}
+						my=".5%"
+						// display={{ base: "flex" }} 
+						// border='solid'
+						minH="5em"
 					>
-						<chakra.span
-							minH={{ sm: "65px", lg: "auto" }}
-							// display={{ base: "flex" }} border='solid'
-						>
-							{question}{" "}
-						</chakra.span>
-					</Heading>
+						{question}{" "}
+					</chakra.div>
 				</Box>
 				<Flex
 					direction="column"
-					height="35vh"
-					justify="space-around"
+					// height="60%"
+					justify="space-evenly"
+					my="5%"
 					// border="solid blue"
 				>
 					{triviaAnswers.map((option) => {
 						return (
 							<Button
-								flexDirection="column"
 								key={option}
-								width={{ base: "60vw", md: "sm" }}
+								// width={{ base: "100%", md: "sm" }}
+								w="100%"
 								fontSize={{ sm: "xs", md: "sm" }}
 								color="rgb(237,111,151)"
 								background="rgb(129,25,40)"
-								my="1vh"
+								my="1%"
 								type="submit"
-								className="start-button"
-								// padding="2px"
-								minH="auto"
 								textAlign="center"
-								justifyContent="start"
 								style={{
 									whiteSpace: "normal",
 									wordWrap: "break-word",
 								}}
-								
-
 								_hover={{ background: "rgb(216,218,197)" }}
 								_active={{ background: "rgb(244,246,222)" }}
-								font-weight="500"
+								fontWeight="500"
 								opacity="1"
 								onClick={() => {
 									option === correct
@@ -167,20 +162,17 @@ const Question = ({
 								}}
 								disabled={answerChosen ? true : false}
 								className={`options
-									${option == correct ? "correct" : ""}`}
-								key={option}
+									${option === correct ? "correct" : ""}`}
 							>
-								<Center padding="2px" h="100%">
-									{option}
-								</Center>
+								{option}
 							</Button>
 						);
 					})}
 				</Flex>
 			</Flex>
 			<Center
-				// border="solid grey"
-				width="xs"
+			// border="solid grey"
+			// width="xs"
 			>
 				{isCorrect(isCorrectAnswer, correct)}
 			</Center>

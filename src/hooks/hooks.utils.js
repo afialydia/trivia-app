@@ -14,6 +14,7 @@ import {
 	Button,
 	Heading,
 	Link,
+	chakra
 } from "@chakra-ui/react";
 
 const ResultHeight = ({ color = null, answer = null }) => {
@@ -21,10 +22,10 @@ const ResultHeight = ({ color = null, answer = null }) => {
 		<Center
 			style={{
 				// border: "solid",
-				minHeight: "70px",
+				minHeight: "4.5rem",
 			}}
 		>
-			<Heading
+			<chakra.span
 				as="h5"
 				size="sm"
 				letterSpacing="widest"
@@ -32,7 +33,7 @@ const ResultHeight = ({ color = null, answer = null }) => {
 				style={{ color: { color } }}
 			>
 				{answer}
-			</Heading>
+			</chakra.span>
 		</Center>
 	);
 };
@@ -68,7 +69,7 @@ export const endOfGame = (
 ) => {
 	if (activeIndex + 1 === totalQuestions && answerChosen) {
 		return (
-			<Modal onClose={onClose} isCentered size={"lg"} isOpen>
+			<Modal onClose={()=>onClose} isCentered size={"lg"} isOpen>
 				<ModalOverlay />
 				<ModalContent background="transparent">
 					<ModalBody background="transparent">

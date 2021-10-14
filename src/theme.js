@@ -1,12 +1,39 @@
 // theme.js
-import "@fontsource/shrikhand"
-import "@fontsource/montserrat"
+import "@fontsource/shrikhand";
+import "@fontsource/montserrat";
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
 	fonts: {
 		heading: "Shrikhand",
 		body: "Montserrat",
+	},
+	styles: {
+		global: {
+			// styles for the `body`
+			html: {
+				h: "100%",
+			},
+			body: {
+				bg: "rgb(244,246,222)",
+				// border: "solid",
+				minH: "100%",
+				w: "100%",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "center",
+				padding: "0",
+				margin: "0",
+				boxSizing: "border-box",
+			},
+			components: {
+		
+			
+			},
+
+			// styles for the `a`
+		},
 	},
 });
 
