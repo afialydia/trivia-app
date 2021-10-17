@@ -135,7 +135,7 @@ ${isCorrectAnswer ? "one" : "two"}`}
 		<Flex
 			// border="solid green"
 			width="100%"
-			minH="100%"
+			h="95%"
 		>
 			<Grid
 				templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}

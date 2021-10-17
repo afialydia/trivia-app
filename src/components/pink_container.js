@@ -35,7 +35,7 @@ const PinkContainer = ({ handleChange, handleSubmit }) => {
 			<Box
 				//  border="solid"
 				w="100%"
-				minH="100%"
+				// minH="100%"
 			>
 				<Heading
 					fontFamily="Shrikhand"
@@ -62,7 +62,7 @@ const PinkContainer = ({ handleChange, handleSubmit }) => {
 			>
 				<Image
 					src="/cowboy.svg"
-					w="85%"
+					w="65%"
 					// boxSize={{ base: "auto" }}
 					fit="contain"
 					alt="BoyHowdyTrivia"

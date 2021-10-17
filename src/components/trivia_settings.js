@@ -3,11 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 //styles
-import {
-	Flex,
-	Grid,
-	GridItem,
-} from "@chakra-ui/react";
+import { Flex, Grid, Center, GridItem } from "@chakra-ui/react";
 
 //files
 import PinkContainer from "./pink_container";
@@ -38,23 +34,31 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 	};
 
 	return (
-		<Flex 
-		// border="solid green" 
-		width="100%" >
-			<Grid
-				templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-				placeItems="stretch"
-				h="100%"
-				w="100%"
-				// border="solid blue"
-			>
-								<GridItem 
-				// border="solid pink" 
-				// rowSpan={1} 
-				colSpan={1}>
-					<PinkContainer handleChange={handleChange} handleSubmit={handleSubmit} />
-				</GridItem>
-				{/* <Image
+		<Center
+			// border="solid"
+			// h="90%"
+		>
+			<Flex justifySelf="start" 
+			// border='solid'
+			width="100%" h="95%">
+				<Grid
+					templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+					placeItems="stretch"
+					h="100%"
+					w="100%"
+					// border="solid blue"
+				>
+					<GridItem
+						// border="solid pink"
+						// rowSpan={1}
+						colSpan={1}
+					>
+						<PinkContainer
+							handleChange={handleChange}
+							handleSubmit={handleSubmit}
+						/>
+					</GridItem>
+					{/* <Image
 				src="/cowboy.svg"
 				boxSize={{ base: "auto" }}
 				objectFit="cover"
@@ -62,8 +66,9 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 				margin="auto 0"
 				display={{ base: "none", sm: "none", md: "block" }}
 			/> */}
-			</Grid>
-		</Flex>
+				</Grid>
+			</Flex>
+		</Center>
 	);
 };
 
