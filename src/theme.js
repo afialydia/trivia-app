@@ -21,6 +21,7 @@ const theme = extendTheme({
 				w: "100%",
 				display: "flex",
 				flexDirection: "column",
+				justifyContent:"space-between",
 				padding: "0",
 				margin: "0",
 				boxSizing: "border-box",

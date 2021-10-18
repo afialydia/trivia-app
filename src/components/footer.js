@@ -19,10 +19,13 @@ import {
 const Footer = () => {
 	return (
 		<Center
-			// h="3%"
+			h="2em"
 			// border="solid red"
 			w="full"
+            as="footer"
 			background="rgb(216,218,197)"
+            m="0"
+            
 		>
 			<Link
 				// border='solid green'
@@ -31,8 +34,8 @@ const Footer = () => {
 					textDecoration: "none",
 				}}
 				_active={{ color: "rgb(216,218,197)" }}
-				// as={RouterLink}
-				to="https://www.afiacaruso.com"
+				isExternal
+				href="https://www.afiacaruso.com"
 			>
 				<Text textAlign="center" fontWeight="bold" color="rgb(237,111,151)">
 					Made with{" "}
@@ -45,7 +48,7 @@ const Footer = () => {
 						color="rgb(129,25,40)"
 						// display={{ base: "block" }}
 					>
-						a 😉 + a nod
+						a 😉 
 					</chakra.span>{" "}
 					by{" "}
 					<chakra.span

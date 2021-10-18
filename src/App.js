@@ -14,10 +14,15 @@ import questions from "./components/questions";
 
 function App() {
 	return (
-		<Flex 
-		// border="solid blue" 
-		justify='space-between'
-		w="100%" h="100%" direction="column">
+		<Flex
+			// border="solid blue"
+			margin="0"
+			padding="0"
+			// justify="space-between"
+			w="100%"
+			h="100%"
+			direction="column"
+		>
 			<Container
 				className="App"
 				// border="solid rgb(129,25,40)"
