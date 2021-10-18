@@ -133,19 +133,23 @@ ${isCorrectAnswer ? "one" : "two"}`}
 
 	return (
 		<Flex
+			justifySelf="start"
 			// border="solid green"
 			width="100%"
-			h="95%"
+			h="100%"
 		>
 			<Grid
-				templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+				templateColumns={{ sm: "1fr" }}
 				placeItems="stretch"
-				minH="100%"
+				minH="95%"
 				w="100%"
 				// border="solid blue"
+				padding="2.5%"
+				marginY="2.5%"
 			>
 				<GridItem
 				//  border="solid lime"
+				colSpan={1}
 				>
 					<Flex
 						// justifyContent="space-between"
@@ -232,9 +236,10 @@ ${isCorrectAnswer ? "one" : "two"}`}
 									{progressArrow(answerChosen, lastQuest)}
 								</chakra.span>{" "}
 								<Spacer />{" "}
-								<Flex 
-								// border="solid" 
-								justify="space-around">
+								<Flex
+									// border="solid"
+									justify="space-around"
+								>
 									<Heading
 										fontSize="md"
 										fontFamily="Shrikhand"

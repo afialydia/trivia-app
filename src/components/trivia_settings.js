@@ -34,19 +34,21 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 	};
 
 	return (
-		<Center
-			// border="solid"
-			// h="90%"
-		>
-			<Flex justifySelf="start" 
-			// border='solid'
-			width="100%" h="95%">
+		<Center backgroundSize="cover">
+			<Flex
+				justifySelf="start"
+				// border='solid'
+				width="100%"
+				h="100%"
+			>
 				<Grid
 					templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
 					placeItems="stretch"
-					h="100%"
+					h="95%"
 					w="100%"
 					// border="solid blue"
+					padding="2.5%"
+					marginY="2.5%"
 				>
 					<GridItem
 						// border="solid pink"
