@@ -1,6 +1,7 @@
 //libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 //styles
 import {
@@ -40,58 +41,63 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 		history.push("/game");
 	};
 
-	const [tabletView] = useMediaQuery("(min-width: 830px)")
-
 	return (
-		<Center backgroundSize="cover" 
-		// border=" grey solid"
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
 		>
-			<Flex
-				justifySelf={{ base: "start", md: "center" }}
-				align="center"
-				// border="solid"
-				width="100%"
-				h="100%"
+			<Center
+				backgroundSize="cover"
+				// border=" grey solid"
 			>
-				<Grid
-					templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
-					placeItems="center stretch"
-					h="95%"
-					w="100%"
-					// border="solid lightblue"
-					padding="2.5%"
-					marginY=".5em"
-					// background={{
-					// 	base: "orange.400",
-					// 	sm: "blue",
-					// 	md: "red",
-					// 	lg: "green",
-					// 	xl: "gold",
-					// 	"2xl": "pink",
-					// }}
+				<Flex
+					justifySelf={{ base: "start", md: "center" }}
+					align="center"
+					// border="solid"
+					width="100%"
+					h="100%"
 				>
-					<GridItem
-						// border="solid pink"
-						colSpan={1}
+					<Grid
+						templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+						placeItems="center stretch"
+						h="95%"
+						w="100%"
+						// border="solid lightblue"
+						padding="2.5%"
+						marginY=".5em"
+						// background={{
+						// 	base: "orange.400",
+						// 	sm: "blue",
+						// 	md: "red",
+						// 	lg: "green",
+						// 	xl: "gold",
+						// 	"2xl": "pink",
+						// }}
 					>
-						<PinkContainer
-							handleChange={handleChange}
-							handleSubmit={handleSubmit}
-						/>
-					</GridItem>
-					<GridItem colSpan={1}>
-						<Image
-							src="/cowboy.svg"
-							boxSize={{ base: "auto" }}
-							objectFit="cover"
-							alt="BoyHowdyTrivia"
-							margin="auto 0"
-							display={{ base: "none", lg: "block" }}
-						/>
-					</GridItem>
-				</Grid>
-			</Flex>
-		</Center>
+						<GridItem
+							// border="solid pink"
+							colSpan={1}
+						>
+							<PinkContainer
+								handleChange={handleChange}
+								handleSubmit={handleSubmit}
+							/>
+						</GridItem>
+						<GridItem colSpan={1}>
+							<Image
+								src="/cowboy.svg"
+								boxSize={{ base: "auto" }}
+								objectFit="cover"
+								alt="BoyHowdyTrivia"
+								margin="auto 0"
+								display={{ base: "none", lg: "block" }}
+							/>
+						</GridItem>
+					</Grid>
+				</Flex>
+			</Center>
+		</motion.div>
 	);
 };
 

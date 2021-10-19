@@ -22,10 +22,9 @@ const Footer = () => {
 			h="2em"
 			// border="solid red"
 			w="full"
-            as="footer"
+			as="footer"
 			background="rgb(216,218,197)"
-            m="0"
-            
+			m="0"
 		>
 			<Link
 				// border='solid green'
@@ -48,7 +47,7 @@ const Footer = () => {
 						color="rgb(129,25,40)"
 						// display={{ base: "block" }}
 					>
-						a 😉 
+						a 😉
 					</chakra.span>{" "}
 					by{" "}
 					<chakra.span
