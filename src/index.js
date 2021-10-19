@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 //styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,16 +16,12 @@ import { store } from "./redux/store";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-	<AnimateSharedLayout type="crossfade">
-		<AnimatePresence exitBeforeEnter initial>
-			<ChakraProvider resetCSS theme={theme}>
-				<Provider store={store}>
-					<Router>
-						<App />
-					</Router>
-				</Provider>
-			</ChakraProvider>
-		</AnimatePresence>
-	</AnimateSharedLayout>,
+	<ChakraProvider resetCSS theme={theme}>
+		<Provider store={store}>
+			<Router>
+				<App />
+			</Router>
+		</Provider>
+	</ChakraProvider>,
 	rootElement
 );

@@ -2,6 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { motion } from "framer-motion";
 
 //files
 import { selectAllQuestions } from "../redux/set_up/set_up.utils";
@@ -15,9 +16,21 @@ const GAME_PLAY = ({ selectAllQuestions }) => {
 	return (
 		<Center backgroundSize="cover">
 			{selectAllQuestions.length > 1 ? (
-				<Questions allQuestions={selectAllQuestions} />
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+				>
+					<Questions allQuestions={selectAllQuestions} />
+				</motion.div>
 			) : (
-				<GameWall />
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+				>
+					<GameWall />
+				</motion.div>
 			)}
 		</Center>
 	);

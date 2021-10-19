@@ -1,10 +1,11 @@
 //libraries
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
 
 //styles
 import "./App.css";
-import { Container, Flex,Spacer } from "@chakra-ui/react";
+import { Container, Flex, Spacer } from "@chakra-ui/react";
 
 //files
 import GAME_PLAY from "./pages/01_game_play.page";
@@ -13,6 +14,7 @@ import Footer from "./components/footer";
 import questions from "./components/questions";
 
 function App() {
+	const location = useLocation()
 	return (
 		<Flex
 			// border="solid blue"
@@ -24,7 +26,7 @@ function App() {
 			minH="100vh"
 			direction="column"
 		>
-			<Spacer/>
+			<Spacer />
 			<Container
 				className="App"
 				// border="solid rgb(129,25,40)"
@@ -34,13 +36,15 @@ function App() {
 				p="0"
 				marginBottom=".5em"
 			>
-				<Switch>
-					<Route exact path="/" component={TriviaSettings} />
-					<Route exact path="/game" component={GAME_PLAY} />
-					<Route exact path="/ui" component={questions} />
-				</Switch>
+					<AnimatePresence exitBeforeEnter initial>
+						<Switch location={location} key={location.pathname}>
+							<Route exact path="/" component={TriviaSettings} />
+							<Route exact path="/game" component={GAME_PLAY} />
+							<Route exact path="/ui" component={questions} />
+						</Switch>
+					</AnimatePresence>
 			</Container>
-			<Spacer/>
+			<Spacer />
 			<Footer />
 		</Flex>
 	);
