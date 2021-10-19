@@ -8,20 +8,14 @@ import { selectAllQuestions } from "../redux/set_up/set_up.utils";
 import Questions from "../components/questions";
 import GameWall from "../components/game_wall";
 
-
 //styles
-import {
-	Center,
-	Flex
-} from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 
 const GAME_PLAY = ({ selectAllQuestions }) => {
 	return (
 		<Center backgroundSize="cover">
 			{selectAllQuestions.length > 1 ? (
-				<Flex>
-					<Questions allQuestions={selectAllQuestions} />
-				</Flex>
+				<Questions allQuestions={selectAllQuestions} />
 			) : (
 				<GameWall />
 			)}

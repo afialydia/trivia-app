@@ -1,34 +1,47 @@
 .carousel-card {
-	/* border: solid 1px; */
-	/* margin: 0auto; */
-	max-width: 80vw;
-	background: rgb(237, 111, 151);
-	/* flex-grow: 1; */
-	/* padding:10px; */
-	padding-top: 10%;
-	height: auto;
-	width: auto;
-	box-sizing: content-box;
+	box-sizing: border-box;
+	/* border: solid 1px peachpuff; */
 	width: 100%;
+	background: rgb(237, 111, 151);	
 	max-width: 540px;
-	/* padding:'15px' */
-	border-radius: 30px;
+	min-height: 23.5em;
+	height: 100%;
+
 }
+
+.carousel-inner {
+	min-height: 20em;
+	/* border: solid forestgreen; */
+
+}
+.carousel.slide {
+	min-height: 100%;
+	/* border: solid purple; */
+	min-height: 20em;
+
+}
+
+/* 
+.carousel-card.carousel-item.active {
+	height: 100%;
+	border: solid orangered;
+	flex-grow: 1;
+} */
 
 @media (max-width: 425px) {
 	.carousel-card.active {
 		/* background: red; */
-		width: "80vw !important";
+		/* width: ""; */
 	}
 }
 
 /* w={{ base: "80vw", sm: "85vw" }} */
 
 .carousel-card.active {
-	/* flex-grow: 1; */
-	/* border: solid blue; */
-	box-sizing: content-box;
+	/* border: solid blue 2px; */
+	/* box-sizing: border-box; */
 	max-width: 540px !important;
+	height: 100%;
 	/* background: red; */
 }
 
@@ -55,20 +68,10 @@
 }
 
 .game-over {
-	width: 50vw;
+	width: 50%;
 	margin: 0 auto;
 	z-index: 30;
 	position: relative;
-}
-
-.card {
-	/* border: solid green; */
-	background: transparent;
-	min-height: auto;
-	display: flex;
-	flex-direction: column;
-	place-items: center;
-	max-height: 100%;
 }
 
 .modal-content {

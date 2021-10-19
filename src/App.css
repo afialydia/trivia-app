@@ -1,9 +1,6 @@
 * {
 	box-sizing: border-box;
+	margin:0;
+	padding:0;
 }
 
-.App {
-	/* background: rgb(244, 246, 222);
-	background-size: cover; */
-	/* height: 100%; */
-}

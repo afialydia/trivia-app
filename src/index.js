@@ -19,7 +19,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
 	<AnimateSharedLayout type="crossfade">
 		<AnimatePresence exitBeforeEnter initial>
-			<ChakraProvider theme={theme}>
+			<ChakraProvider resetCSS theme={theme}>
 				<Provider store={store}>
 					<Router>
 						<App />
