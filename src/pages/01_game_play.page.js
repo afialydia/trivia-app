@@ -14,25 +14,19 @@ import { Center } from "@chakra-ui/react";
 
 const GAME_PLAY = ({ selectAllQuestions }) => {
 	return (
-		<Center backgroundSize="cover">
-			{selectAllQuestions.length > 1 ? (
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-				>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+		>
+			<Center backgroundSize="cover">
+				{selectAllQuestions.length > 1 ? (
 					<Questions allQuestions={selectAllQuestions} />
-				</motion.div>
-			) : (
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-				>
+				) : (
 					<GameWall />
-				</motion.div>
-			)}
-		</Center>
+				)}
+			</Center>
+		</motion.div>
 	);
 };
 
