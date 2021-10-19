@@ -133,35 +133,46 @@ ${isCorrectAnswer ? "one" : "two"}`}
 
 	return (
 		<Flex
-			justifySelf="start"
-			// border="solid green"
+			justifySelf={{ base: "start", lg: "center" }}
+			align="center"
+			// border="solid"
 			width="100%"
 			h="100%"
 		>
 			<Grid
-				templateColumns={{ sm: "1fr" }}
-				placeItems="stretch"
-				minH="95%"
+				templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+				placeItems="center stretch"
+				h="95%"
 				w="100%"
-				// border="solid blue"
+				// border="solid lightblue"
 				padding="2.5%"
-				marginY="2.5%"
+				marginY=".5em"
+				// background={{
+				// 	base: "orange.400",
+				// 	sm: "blue",
+				// 	md: "red",
+				// 	lg: "green",
+				// 	xl: "gold",
+				// 	"2xl": "pink",
+				// }}
 			>
 				<GridItem
-				//  border="solid lime"
-				colSpan={1}
+					//  border="solid lime"
+					colSpan={1}
 				>
 					<Flex
-						// justifyContent="space-between"
+						justifyContent="space-evenly"
 						textAlign="center"
 						direction="column"
 						w="100%"
-						minH="100%"
+						// maxW="36em"
+						h={{ base: "100%", lg: "36.25em" }}
+						// maxH="45em"
 						background="rgb(237,111,151)"
 						color="rgb(129,25,40)"
 						borderRadius="xl"
 						shadow="lg"
-						justify="space-evenly"
+						justify="center"
 						align="stretch"
 						padding="1.5em"
 						// border="solid red"
@@ -221,7 +232,7 @@ ${isCorrectAnswer ? "one" : "two"}`}
 
 							<Flex
 								justify="center"
-								display={{ sm: "flex", md: "none" }}
+								display={{ sm: "flex", lg: "none" }}
 								// border="solid grey"
 								direction="column"
 								minH="14%"
@@ -274,12 +285,8 @@ ${isCorrectAnswer ? "one" : "two"}`}
 					</Flex>
 				</GridItem>
 
-				<GridItem display="none">
-					<Flex
-						display={{ base: "none", md: "flex" }}
-						justify="center"
-						direction="column"
-					>
+				<GridItem>
+					<Flex display="flex" justify="center" direction="column">
 						<Spacer />
 						<Heading
 							fontSize={{ base: "3xl", sm: "4xl" }}
@@ -308,7 +315,7 @@ ${isCorrectAnswer ? "one" : "two"}`}
 							textAlign="center"
 							minH="60px"
 							height="auto"
-							display={{ base: "block" }}
+							display={{ base: "none", lg: "block" }}
 						>
 							{progressArrow(answerChosen, lastQuest)}
 						</chakra.span>{" "}

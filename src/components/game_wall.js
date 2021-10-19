@@ -12,14 +12,13 @@ import {
 	chakra,
 	Image,
 	Spacer,
-	Grid,
+	Center,
 } from "@chakra-ui/react";
 
 const GameWall = () => {
 	return (
-		<Grid
-			templateColumns="1fr"
-			h="100vh"
+		<Center
+			h="100%"
 			// border="solid red"
 			w="full"
 		>
@@ -68,7 +67,7 @@ const GameWall = () => {
 				</Text>
 			</Link>
 			<Spacer />
-		</Grid>
+		</Center>
 	);
 };
 

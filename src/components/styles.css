@@ -1,34 +1,24 @@
 .carousel-card {
 	box-sizing: border-box;
-	/* border: solid 1px; */
-	/* margin: 0auto; */
+	/* border: solid 1px peachpuff; */
 	width: 100%;
-	background: rgb(237, 111, 151);
-	/* flex-grow: 1; */
-	/* padding:10px; */
-	/* padding-top: 10%; */
-	/* height: auto; */
-	/* box-sizing: content-box; */
-	/* width: 100%; */
+	background: rgb(237, 111, 151);	
 	max-width: 540px;
-	/* flex-grow: 1; */
+	min-height: 23.5em;
 	height: 100%;
-	/* padding:'15px' */
-	/* border-radius: 30px; */
+
 }
 
 .carousel-inner {
-	
 	min-height: 20em;
 	/* border: solid forestgreen; */
-	/* flex-grow: 1; */
 
 }
 .carousel.slide {
 	min-height: 100%;
 	/* border: solid purple; */
-	flex-grow: 1;
-	padding-top: 10%;
+	min-height: 20em;
+
 }
 
 /* 

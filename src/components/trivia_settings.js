@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 //styles
-import { Flex, Grid, Center, GridItem } from "@chakra-ui/react";
+import {
+	Flex,
+	Grid,
+	Center,
+	GridItem,
+	Image,
+	useMediaQuery,
+} from "@chakra-ui/react";
 
 //files
 import PinkContainer from "./pink_container";
@@ -33,26 +40,38 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 		history.push("/game");
 	};
 
+	const [tabletView] = useMediaQuery("(min-width: 830px)")
+
 	return (
-		<Center backgroundSize="cover">
+		<Center backgroundSize="cover" 
+		// border=" grey solid"
+		>
 			<Flex
-				justifySelf="start"
-				// border='solid'
+				justifySelf={{ base: "start", md: "center" }}
+				align="center"
+				// border="solid"
 				width="100%"
 				h="100%"
 			>
 				<Grid
-					templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-					placeItems="stretch"
+					templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+					placeItems="center stretch"
 					h="95%"
 					w="100%"
-					// border="solid blue"
+					// border="solid lightblue"
 					padding="2.5%"
-					marginY="2.5%"
+					marginY=".5em"
+					// background={{
+					// 	base: "orange.400",
+					// 	sm: "blue",
+					// 	md: "red",
+					// 	lg: "green",
+					// 	xl: "gold",
+					// 	"2xl": "pink",
+					// }}
 				>
 					<GridItem
 						// border="solid pink"
-						// rowSpan={1}
 						colSpan={1}
 					>
 						<PinkContainer
@@ -60,14 +79,16 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 							handleSubmit={handleSubmit}
 						/>
 					</GridItem>
-					{/* <Image
-				src="/cowboy.svg"
-				boxSize={{ base: "auto" }}
-				objectFit="cover"
-				alt="BoyHowdyTrivia"
-				margin="auto 0"
-				display={{ base: "none", sm: "none", md: "block" }}
-			/> */}
+					<GridItem colSpan={1}>
+						<Image
+							src="/cowboy.svg"
+							boxSize={{ base: "auto" }}
+							objectFit="cover"
+							alt="BoyHowdyTrivia"
+							margin="auto 0"
+							display={{ base: "none", lg: "block" }}
+						/>
+					</GridItem>
 				</Grid>
 			</Flex>
 		</Center>

@@ -109,30 +109,28 @@ const Question = ({
 					w="100%"
 					maxW="545px"
 					// border="solid teal"
+
+					fontSize={{ sm: "sm", md: "lg" }}
+					letterSpacing="wide"
+					lineHeight="short"
+					fontWeight="hairline"
+					fontFamily="Montserrat"
+					// mt={{ base: 3, sm: 5, md: 5 }}
+					mx={{ sm: "auto", lg: 0 }}
+					mb="2%"
+					// minH={{ sm: "8em", lg: "auto" }}
+					my=".5%"
+					// display={{ base: "flex" }}
+					// border='solid'
+					minH="5.8em"
 				>
-					<chakra.div
-						fontSize={{ sm: "sm", md: "lg" }}
-						letterSpacing="wide"
-						lineHeight="short"
-						fontWeight="hairline"
-						fontFamily="Montserrat"
-						// mt={{ base: 3, sm: 5, md: 5 }}
-						mx={{ sm: "auto", lg: 0 }}
-						mb="2%"
-						// minH={{ sm: "8em", lg: "auto" }}
-						my=".5%"
-						// display={{ base: "flex" }} 
-						// border='solid'
-						minH="5em"
-					>
-						{question}{" "}
-					</chakra.div>
+					{question}{" "}
 				</Box>
 				<Flex
 					direction="column"
 					// height="60%"
 					justify="space-evenly"
-					my="5%"
+					my="1em"
 					// border="solid blue"
 				>
 					{triviaAnswers.map((option) => {

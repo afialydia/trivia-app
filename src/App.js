@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 //styles
 import "./App.css";
-import { Container, Flex } from "@chakra-ui/react";
+import { Container, Flex,Spacer } from "@chakra-ui/react";
 
 //files
 import GAME_PLAY from "./pages/01_game_play.page";
@@ -18,19 +18,21 @@ function App() {
 			// border="solid blue"
 			margin="0"
 			padding="0"
-			// justify="space-between"
+			justify="space-between"
 			w="100%"
 			h="100%"
+			minH="100vh"
 			direction="column"
 		>
+			<Spacer/>
 			<Container
 				className="App"
 				// border="solid rgb(129,25,40)"
-				display="flex"
-				flexDirection="column"
+				maxW="container.xl"
 				w="calc(100vw - 2em)"
-				h="calc(100vh - 2em)"
+				h="100%"
 				p="0"
+				marginBottom=".5em"
 			>
 				<Switch>
 					<Route exact path="/" component={TriviaSettings} />
@@ -38,6 +40,7 @@ function App() {
 					<Route exact path="/ui" component={questions} />
 				</Switch>
 			</Container>
+			<Spacer/>
 			<Footer />
 		</Flex>
 	);

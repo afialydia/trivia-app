@@ -22,7 +22,9 @@ const PinkContainer = ({ handleChange, handleSubmit }) => {
 			textAlign="center"
 			direction="column"
 			w="100%"
-			minH="100%"
+			// maxW="36em"
+			h={{base:"100%", lg:"36.25em"}}
+			// maxH="45em"
 			background="rgb(237,111,151)"
 			color="rgb(129,25,40)"
 			borderRadius="xl"
@@ -58,6 +60,7 @@ const PinkContainer = ({ handleChange, handleSubmit }) => {
 			</Box>
 			<Center
 				// border="solid .5px" borderRadius="xl"
+				display={{ base: "reset", lg: "none" }}
 				my={4}
 			>
 				<Image
