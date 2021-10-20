@@ -48,13 +48,13 @@ Holds the hooks used for end of game staging and whether or not user has chosen 
 Staging area for two modes of app, game set up and game play. Smaller components are imported into these files and returned as part of the larger components.
 
 #### Redux Folder
-All state is managed in redux folder. File structure is set up to allow for additions to state. Actions, reducers & utils placed in folder within redux folder that cooresponds with the area of state that is being managed. 
+All state is managed in redux folder. File structure is set up to allow for additions to state. Actions, reducers & utils placed in folder within redux folder that corresponds with the area of state that is being managed. 
 
 
 ### Tech Stack Used:
 
 - [Axios](https://github.com/axios/axios)
-- [Bootstrap](https://getbootstrap.com/)
+- [Chakra UI](https://chakra-ui.com/)
 - [React](https://reactjs.org/)
 - [React-Redux](https://react-redux.js.org/)
 - [Reactstrap](https://reactstrap.github.io/)

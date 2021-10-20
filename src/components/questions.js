@@ -8,6 +8,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Carousel, CarouselItem } from "reactstrap";
 
 import {
+	Center,
 	Link,
 	Flex,
 	Heading,
@@ -145,8 +146,8 @@ ${isCorrectAnswer ? "one" : "two"}`}
 				h="95%"
 				w="100%"
 				// border="solid lightblue"
-				padding="2.5%"
-				marginY=".5em"
+				padding=".5em"
+				marginY={{ base: ".5em", lg: "0" }}
 				// background={{
 				// 	base: "orange.400",
 				// 	sm: "blue",
@@ -160,14 +161,9 @@ ${isCorrectAnswer ? "one" : "two"}`}
 					//  border="solid lime"
 					colSpan={1}
 				>
-					<Flex
-						justifyContent="space-evenly"
-						textAlign="center"
-						direction="column"
+					<Center
 						w="100%"
-						// maxW="36em"
-						h={{ base: "100%", lg: "36.25em" }}
-						// maxH="45em"
+						h={{ base: "100%", lg: "35em" }}
 						background="rgb(237,111,151)"
 						color="rgb(129,25,40)"
 						borderRadius="xl"
@@ -177,112 +173,123 @@ ${isCorrectAnswer ? "one" : "two"}`}
 						padding="1.5em"
 						// border="solid red"
 					>
-						<Link
-							_hover={{
-								color: "rgb(129,25,40)",
-								textDecoration: "none",
-							}}
-							// _active={{ color: "rgb(216,218,197)" }}
-							as={RouterLink}
-							to="/"
-						>
-							<Box w="100%">
-								<Heading
-									fontFamily="Shrikhand"
-									letterSpacing="wider"
-									lineHeight="short"
-									fontWeight="hairline"
-								>
-									<chakra.span display={{ base: "block" }}>
-										Boy Howdy{" "}
-									</chakra.span>
-									<chakra.span display={{ base: "block" }}>
-										Trivia Bodanza{" "}
-									</chakra.span>
-								</Heading>{" "}
-							</Box>
-						</Link>
 						<Flex
+							textAlign="center"
 							direction="column"
-							// border="solid dodgerblue"
-							// padding-bottom='15px'
-							justify="space-around"
-							// h="98%"
-							flexGrow="1"
+							w={{ base: "100%", lg: "90%" }}
+							h={{ base: "100%", lg: "90%" }}
+							justify="center"
+							align="stretch"
+							padding={{ base: "0", lg: "1.5em" }}
+							// border="solid red"
 						>
-							<Flex
-								flexGrow="1"
-								// border="solid orange"
-								w="100%"
-								direction="column"
-								justifyContent="space-around"
-								align="center"
+							<Link
+								_hover={{
+									color: "rgb(129,25,40)",
+									textDecoration: "none",
+								}}
+								// _active={{ color: "rgb(216,218,197)" }}
+								as={RouterLink}
+								to="/"
 							>
-								<Carousel
-									flexGrow={1}
-									// border="solid teal 15px"
-									activeIndex={activeIndex}
-									previous={() => previous()}
-									next={() => next()}
-									interval={false}
-								>
-									{slides}
-								</Carousel>
-							</Flex>
-
-							<Flex
-								justify="center"
-								display={{ sm: "flex", lg: "none" }}
-								// border="solid grey"
-								direction="column"
-								minH="14%"
-							>
-								<chakra.span
-									textAlign="center"
-									minH="3.5em"
-									// height="auto"
-									flexGrow="1"
-									display={{ base: "block" }}
-								>
-									{progressArrow(answerChosen, lastQuest)}
-								</chakra.span>{" "}
-								<Spacer />{" "}
-								<Flex
-									// border="solid"
-									justify="space-around"
-								>
+								<Box w="100%">
 									<Heading
-										fontSize="md"
 										fontFamily="Shrikhand"
 										letterSpacing="wider"
 										lineHeight="short"
 										fontWeight="hairline"
-										textAlign="center"
-										color="rgb(129,25,40)"
-									>
-										{" "}
-										<chakra.span color="rgb(216,218,197)">
-											{" "}
-											{totalScore}{" "}
-										</chakra.span>
-									</Heading>
-									<Heading
-										fontSize={{ base: "md", sm: "md" }}
-										fontFamily="Shrikhand"
-										letterSpacing="wider"
-										lineHeight="short"
-										fontWeight="hairline"
-										textAlign="center"
-										color="rgb(129,25,40)"
 									>
 										<chakra.span display={{ base: "block" }}>
-											{activeIndex + 1} of {totalQuestions}{" "}
-										</chakra.span>{" "}
+											Boy Howdy{" "}
+										</chakra.span>
+										<chakra.span display={{ base: "block" }}>
+											Trivia Bodanza{" "}
+										</chakra.span>
 									</Heading>{" "}
+								</Box>
+							</Link>
+							<Flex
+								direction="column"
+								// border="solid dodgerblue"
+								// padding-bottom='15px'
+								justify="space-around"
+								// h="98%"
+								flexGrow="1"
+							>
+								<Flex
+									flexGrow="1"
+									// border="solid orange"
+									w="100%"
+									direction="column"
+									justifyContent="space-around"
+									align="center"
+								>
+									<Carousel
+										flexGrow={1}
+										// border="solid teal 15px"
+										activeIndex={activeIndex}
+										previous={() => previous()}
+										next={() => next()}
+										interval={false}
+									>
+										{slides}
+									</Carousel>
+								</Flex>
+
+								<Flex
+									justify="center"
+									display={{ sm: "flex", lg: "none" }}
+									// border="solid grey"
+									direction="column"
+									minH="14%"
+								>
+									<chakra.span
+										textAlign="center"
+										minH="3.5em"
+										// height="auto"
+										flexGrow="1"
+										display={{ base: "block" }}
+									>
+										{progressArrow(answerChosen, lastQuest)}
+									</chakra.span>{" "}
+									<Spacer />{" "}
+									<Flex
+										// border="solid"
+										justify="space-around"
+									>
+										<Heading
+											fontSize="md"
+											fontFamily="Shrikhand"
+											letterSpacing="wider"
+											lineHeight="short"
+											fontWeight="hairline"
+											textAlign="center"
+											color="rgb(129,25,40)"
+										>
+											{" "}
+											<chakra.span color="rgb(216,218,197)">
+												{" "}
+												{totalScore}{" "}
+											</chakra.span>
+										</Heading>
+										<Heading
+											fontSize={{ base: "md", sm: "md" }}
+											fontFamily="Shrikhand"
+											letterSpacing="wider"
+											lineHeight="short"
+											fontWeight="hairline"
+											textAlign="center"
+											color="rgb(129,25,40)"
+										>
+											<chakra.span display={{ base: "block" }}>
+												{activeIndex + 1} of {totalQuestions}{" "}
+											</chakra.span>{" "}
+										</Heading>{" "}
+									</Flex>
 								</Flex>
 							</Flex>
 						</Flex>
-					</Flex>
+					</Center>
 				</GridItem>
 
 				<GridItem>

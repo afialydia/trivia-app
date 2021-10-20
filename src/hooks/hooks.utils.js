@@ -104,6 +104,7 @@ export const endOfGame = (
 									textDecoration: "none",
 								}}
 								_active={{ color: "rgb(216,218,197)" }}
+								_focus={{border:"none"}}
 								as={RouterLink}
 								to="/"
 							>

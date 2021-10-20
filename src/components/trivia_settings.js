@@ -19,6 +19,8 @@ import {
 	getTriviaQuestions,
 	loadQuestion,
 } from "../redux/set_up/set_up.actions";
+import Footer from "./footer";
+
 
 const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 	const [state, setState] = useState({
@@ -46,26 +48,27 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
+			// style={{border:"solid teal"}}
 		>
 			<Center
 				backgroundSize="cover"
-				// border=" grey solid"
+				// border="solid grey"
 			>
 				<Flex
 					justifySelf={{ base: "start", md: "center" }}
 					align="center"
-					// border="solid"
+					// border="solid orange"
 					width="100%"
 					h="100%"
 				>
 					<Grid
 						templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
 						placeItems="center stretch"
-						h="95%"
+						h="100%"
 						w="100%"
 						// border="solid lightblue"
-						padding="2.5%"
-						marginY=".5em"
+						padding=".5em"
+						marginY={{base:".5em",lg:"0"}}
 						// background={{
 						// 	base: "orange.400",
 						// 	sm: "blue",
@@ -93,6 +96,7 @@ const TriviaSettings = ({ history, getTriviaQuestions, loadQuestion }) => {
 								margin="auto 0"
 								display={{ base: "none", lg: "block" }}
 							/>
+							{/* <Footer borderRadius={"lg"} /> */}
 						</GridItem>
 					</Grid>
 				</Flex>

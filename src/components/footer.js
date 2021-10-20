@@ -16,7 +16,7 @@ import {
 	Grid,
 } from "@chakra-ui/react";
 
-const Footer = () => {
+const Footer = ({borderRadius="0"}) => {
 	return (
 		<Center
 			h="2em"
@@ -25,6 +25,7 @@ const Footer = () => {
 			as="footer"
 			background="rgb(216,218,197)"
 			m="0"
+			borderRightRadius={borderRadius}
 		>
 			<Link
 				// border='solid green'
