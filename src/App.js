@@ -10,8 +10,9 @@ import { Container, Flex, Spacer } from "@chakra-ui/react";
 //files
 import GAME_PLAY from "./pages/01_game_play.page";
 import TriviaSettings from "./components/trivia_settings";
-import Footer from "./components/footer";
 import questions from "./components/questions";
+import Footer from "./components/footer";
+
 
 function App() {
 	const location = useLocation()
@@ -32,7 +33,7 @@ function App() {
 				// border="solid rgb(129,25,40)"
 				maxW="container.xl"
 				w="calc(100vw - 2em)"
-				h="100%"
+				h="90%"
 				p="0"
 				marginBottom=".5em"
 			>

@@ -17,14 +17,9 @@ import {
 
 const PinkContainer = ({ handleChange, handleSubmit }) => {
 	return (
-		<Flex
-			justifyContent="space-evenly"
-			textAlign="center"
-			direction="column"
+		<Center
 			w="100%"
-			// maxW="36em"
-			h={{base:"100%", lg:"36.25em"}}
-			// maxH="45em"
+			h={{ base: "100%", lg: "35em" }}
 			background="rgb(237,111,151)"
 			color="rgb(129,25,40)"
 			borderRadius="xl"
@@ -34,165 +29,178 @@ const PinkContainer = ({ handleChange, handleSubmit }) => {
 			padding="1.5em"
 			// border="solid red"
 		>
-			<Box
-				//  border="solid"
-				w="100%"
-				// minH="100%"
+			<Flex
+				textAlign="center"
+				direction="column"
+				w={{ base: "100%", lg: "90%" }}
+				h={{ base: "100%", lg: "90%" }}
+				justify="center"
+				align="stretch"
+				padding={{ base: "0", lg: "1.5em" }}
+				// border="solid red"
 			>
-				<Heading
-					fontFamily="Shrikhand"
-					letterSpacing="wider"
-					lineHeight="short"
-					fontWeight="hairline"
+				<Box
+					//  border="solid"
+					w="100%"
+					// minH="100%"
 				>
-					<chakra.span display={{ base: "block" }}>Boy Howdy </chakra.span>
-					<chakra.span display={{ base: "block" }}>Trivia Bodanza </chakra.span>
-				</Heading>
-				<chakra.p
-					mt={{ base: 3, sm: 5, md: 5 }}
-					mx={{ sm: "auto", lg: 0 }}
-					// mb={4}
-					fontSize={{ base: "lg", md: "xl" }}
-					lineHeight="base"
+					<Heading
+						fontFamily="Shrikhand"
+						letterSpacing="wider"
+						lineHeight="short"
+						fontWeight="hairline"
+					>
+						<chakra.span display={{ base: "block" }}>Boy Howdy </chakra.span>
+						<chakra.span display={{ base: "block" }}>
+							Trivia Bodanza{" "}
+						</chakra.span>
+					</Heading>
+					<chakra.p
+						mt={{ base: 3, sm: 5, md: 5 }}
+						mx={{ sm: "auto", lg: 0 }}
+						// mb={4}
+						fontSize={{ base: "lg", md: "xl" }}
+						lineHeight="base"
+					>
+						Test your trivia knowledge.
+					</chakra.p>
+				</Box>
+				<Center
+					// border="solid .5px" borderRadius="xl"
+					display={{ base: "reset", lg: "none" }}
+					my={4}
 				>
-					Test your trivia knowledge.
-				</chakra.p>
-			</Box>
-			<Center
-				// border="solid .5px" borderRadius="xl"
-				display={{ base: "reset", lg: "none" }}
-				my={4}
-			>
-				<Image
-					src="/cowboy.svg"
-					w="65%"
-					// boxSize={{ base: "auto" }}
-					fit="contain"
-					alt="BoyHowdyTrivia"
-					// margin="auto 0"
-					// display={{ base: "none", sm: "none", md: "block" }}
-				/>
-			</Center>
-			<Box
-			// border="solid"
-			>
-				<chakra.form
-					className="settings-form"
-					// textAlign="center"
-					onSubmit={handleSubmit}
-					// border="solid"
-					display="flex"
-					flexDirection="column"
+					<Image
+						src="/cowboy.svg"
+						w="65%"
+						// boxSize={{ base: "auto" }}
+						fit="contain"
+						alt="BoyHowdyTrivia"
+						// margin="auto 0"
+						// display={{ base: "none", sm: "none", md: "block" }}
+					/>
+				</Center>
+				<Box
+				// border="solid"
 				>
-					<FormControl
+					<chakra.form
+						className="settings-form"
+						// textAlign="center"
+						onSubmit={handleSubmit}
 						// border="solid"
-						id="category"
 						display="flex"
-						flexDir="column"
-						// justifyContent="space-around"
-						// alignContent="center"
-						// justifyContent="center"
-						// justifyItems="center"
-						// alignItems='center'
-						// margin='0'
+						flexDirection="column"
 					>
-						<FormLabel htmlFor="Choose your Category">
-							<Heading
-								as="h5"
-								size={{ base: "sm", sm: "md" }}
-								letterSpacing="widest"
-								lineHeight="short"
-								textAlign="center"
-							>
-								Category
-							</Heading>
-						</FormLabel>
+						<FormControl
+							// border="solid"
+							id="category"
+							display="flex"
+							flexDir="column"
+							// justifyContent="space-around"
+							// alignContent="center"
+							// justifyContent="center"
+							// justifyItems="center"
+							// alignItems='center'
+							// margin='0'
+						>
+							<FormLabel htmlFor="Choose your Category">
+								<Heading
+									as="h5"
+									size={{ base: "sm", sm: "md" }}
+									letterSpacing="widest"
+									lineHeight="short"
+									textAlign="center"
+								>
+									Category
+								</Heading>
+							</FormLabel>
 
-						<Select
-							isRequired
-							name="category"
-							placeholder="Select a Category"
-							onChange={handleChange}
-							border="transparent"
-							focusBorderColor="rgb(129,25,40)"
-							// border="solid .5px"
-							textAlign="center"
-						>
-							<option value="31">Anime/Manga</option>
-							<option value="23">History</option>
-							<option value="11">Film</option>
-						</Select>
-					</FormControl>
-					{/* <Spacer /> */}
-					<FormControl id="amount">
-						<FormLabel htmlFor="Amount of Questions">
-							{" "}
-							<Heading
-								as="h5"
-								size={{ base: "sm", sm: "md" }}
-								letterSpacing="widest"
-								lineHeight="short"
+							<Select
+								isRequired
+								name="category"
+								placeholder="Select a Category"
+								onChange={handleChange}
+								border="transparent"
+								focusBorderColor="rgb(129,25,40)"
+								// border="solid .5px"
 								textAlign="center"
 							>
-								# of Questions
-							</Heading>
-						</FormLabel>
-						<Select
-							isRequired
-							name="amount"
-							placeholder="Select Number of Questions"
-							onChange={handleChange}
-							border="transparent"
-							focusBorderColor="rgb(129,25,40)"
-							textAlign="center"
-						>
-							<option>4</option>
-							<option>8</option>
-							<option>12</option>
-						</Select>
-					</FormControl>
-					{/* <Spacer /> */}
-					<FormControl id="difficulty">
-						<FormLabel htmlFor="Difficulty">
-							{" "}
-							<Heading
-								as="h5"
-								size={{ base: "sm", sm: "md" }}
-								letterSpacing="widest"
-								lineHeight="short"
+								<option value="31">Anime/Manga</option>
+								<option value="23">History</option>
+								<option value="11">Film</option>
+							</Select>
+						</FormControl>
+						{/* <Spacer /> */}
+						<FormControl id="amount">
+							<FormLabel htmlFor="Amount of Questions">
+								{" "}
+								<Heading
+									as="h5"
+									size={{ base: "sm", sm: "md" }}
+									letterSpacing="widest"
+									lineHeight="short"
+									textAlign="center"
+								>
+									# of Questions
+								</Heading>
+							</FormLabel>
+							<Select
+								isRequired
+								name="amount"
+								placeholder="Select Number of Questions"
+								onChange={handleChange}
+								border="transparent"
+								focusBorderColor="rgb(129,25,40)"
 								textAlign="center"
 							>
-								Difficulty
-							</Heading>
-						</FormLabel>
-						<Select
-							isRequired
-							placeholder="Select Your Difficulty"
-							name="difficulty"
-							onChange={handleChange}
-							border="transparent"
-							focusBorderColor="rgb(129,25,40)"
-							textAlign="center"
+								<option>4</option>
+								<option>8</option>
+								<option>12</option>
+							</Select>
+						</FormControl>
+						{/* <Spacer /> */}
+						<FormControl id="difficulty">
+							<FormLabel htmlFor="Difficulty">
+								{" "}
+								<Heading
+									as="h5"
+									size={{ base: "sm", sm: "md" }}
+									letterSpacing="widest"
+									lineHeight="short"
+									textAlign="center"
+								>
+									Difficulty
+								</Heading>
+							</FormLabel>
+							<Select
+								isRequired
+								placeholder="Select Your Difficulty"
+								name="difficulty"
+								onChange={handleChange}
+								border="transparent"
+								focusBorderColor="rgb(129,25,40)"
+								textAlign="center"
+							>
+								<option value="easy">Easy</option>
+								<option value="medium">Medium</option>
+								<option value="hard">Hard</option>
+							</Select>
+						</FormControl>
+						{/* <Spacer /> */}
+						<Button
+							color="rgb(237,111,151)"
+							background="rgb(129,25,40)"
+							my="1%"
+							type="submit"
+							className="start-button"
+							_hover={{ background: "rgb(216,218,197)" }}
 						>
-							<option value="easy">Easy</option>
-							<option value="medium">Medium</option>
-							<option value="hard">Hard</option>
-						</Select>
-					</FormControl>
-					{/* <Spacer /> */}
-					<Button
-						color="rgb(237,111,151)"
-						background="rgb(129,25,40)"
-						my="1%"
-						type="submit"
-						className="start-button"
-						_hover={{ background: "rgb(216,218,197)" }}
-					>
-						Start Game
-					</Button>{" "}
-				</chakra.form>
-			</Box>
-		</Flex>
+							Start Game
+						</Button>{" "}
+					</chakra.form>
+				</Box>
+			</Flex>
+		</Center>
 	);
 };
 
